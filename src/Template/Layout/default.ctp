@@ -16,10 +16,6 @@ $system = 'System';
     <?= $this->Html->meta('icon', 'img/favicon.png', ['type' => 'image/png']) ?>
     <!-- CSS -->
     <?= $this->Html->css('bootstrap.min.css') ?>
-    <!-- Javascript -->
-    <?= $this->Html->script('jquery.js') ?>
-    <?= $this->Html->script('bootstrap.min.js') ?>
-    <?= $this->Html->script('popper.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -32,5 +28,9 @@ $system = 'System';
         <?= $this->fetch('content') ?>
     </main>
     <?= $this->element('footer') ?>
+    <!-- Javascript -->
+    <?= $this->Html->script('jquery.js') ?>
+    <?= $this->Html->script('bootstrap.min.js') ?>
+    <?= $this->Html->script('popper.js') ?>
 </body>
 </html>
