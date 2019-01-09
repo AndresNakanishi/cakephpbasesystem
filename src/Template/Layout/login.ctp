@@ -1,6 +1,6 @@
 <?php 
 
-$system = 'System';
+$system = 'System | Login';
 
 ?>
 <!DOCTYPE html>
@@ -9,8 +9,7 @@ $system = 'System';
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $system ?> |
-        <?= $this->fetch('title') ?>
+        <?= $system ?>
     </title>
     <!-- FAVICON -->
     <?= $this->Html->meta('icon', 'img/favicon.png', ['type' => 'image/png']) ?>
@@ -26,11 +25,9 @@ $system = 'System';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <?= $this->element('menu') ?>
     <?= $this->Flash->render() ?>
     <div class="container">
         <?= $this->fetch('content') ?>
     </div>
-    <?= $this->element('footer') ?>
 </body>
 </html>
