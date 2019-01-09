@@ -17,9 +17,9 @@ $system = 'System';
     <!-- CSS -->
     <?= $this->Html->css('bootstrap.min.css') ?>
     <!-- Javascript -->
-    <?= $this->Html->script('jquery.js', ['block' => 'scriptBottom']) ?>
-    <?= $this->Html->script('bootstrap.min.js', ['block' => 'scriptBottom']) ?>
-    <?= $this->Html->script('popper.js', ['block' => 'scriptBottom']) ?>
+    <?= $this->Html->script('jquery.js') ?>
+    <?= $this->Html->script('bootstrap.min.js') ?>
+    <?= $this->Html->script('popper.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -28,9 +28,9 @@ $system = 'System';
 <body>
     <?= $this->element('menu') ?>
     <?= $this->Flash->render() ?>
-    <div class="container">
+    <main role="main">
         <?= $this->fetch('content') ?>
-    </div>
+    </main>
     <?= $this->element('footer') ?>
 </body>
 </html>

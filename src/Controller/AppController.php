@@ -14,7 +14,10 @@
  */
 namespace App\Controller;
 
+use App\Model\Entity\Alert;
+use App\Model\Entity\User;
 use Cake\Controller\Controller;
+use Cake\ORM\TableRegistry;
 use Cake\Event\Event;
 
 /**
@@ -45,6 +48,29 @@ class AppController extends Controller
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'username',
+                        'password' => 'password'
+                    ]
+                ]
+            ],
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+            'loginRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+            ],
+            'logoutRedirect' => [
+                'controller' => 'users',
+                'action' => 'login',
+            ],
+            'authError' => 'No tiene permiso para acceder a la página solicitada.',
+        ]);
 
         /*
          * Enable the following component for recommended CakePHP security settings.

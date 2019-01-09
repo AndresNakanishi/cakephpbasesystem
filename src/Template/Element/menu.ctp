@@ -10,8 +10,14 @@
 
     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-system">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gestión</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>/users">Usuarios</a>
+            <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>/profiles">Perfiles</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
