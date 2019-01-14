@@ -1,33 +1,48 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-      <div class="card card-signin my-5">
-        <div class="card-body">
-          <h5 class="card-title text-center">Sign In</h5>
-          
-          <?= $this->Form->create(); ?>
-          <form class="form-signin">
-            <div class="form-label-group">
-              <label for="inputEmail">Usuario:</label>
-              <?= $this->Form->input('username', ['label' => false]); ?>
-            </div>
-
-            <div class="form-label-group">
-              <label for="inputPassword">Contraseña: </label>
-              <?= $this->Form->input('password',['type' => 'password', 'label' => false]); ?>
-            </div>
-
-            <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <label class="custom-control-label" for="customCheck1">Recordar Contraseña</label>
-            </div>
-            <?= $this->Form->submit('Ingresar', ['class' => 'btn btn-primary']); ?>
-
-            <?= $this->Form->end(); ?>
-          <br>
+<div class="row d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+      <div class="col-md-6">
           <?= $this->Flash->render() ?>
-        </div>
+          <div class="card">
+              <div class="card-header">Login</div>
+
+              <div class="card-body">
+                <?= $this->Form->create(); ?>
+                  <?= $this->Form->input('username', [
+                      'label' => ['text' => 'Usuario','class' => 'col-md-4'],
+                      'templates' => [
+                      'label' => '<label class="col-md-4 control-label text-right mb-0" for="username">Usuario:</label>',
+                      'input' => '<div class="col-md-6"><input type="text" class="form-control" name="username" placeholder="Usuario" required/></div>',
+                      'inputContainer' => '<div class="form-group d-flex justify-content-center align-items-center">{{content}}</div>',
+                      'inputContainerError' => '<div class="form-group d-flex justify-content-center align-items-center has-error">{{content}}{{error}}</div>',
+                      ],
+                  ]);?>
+                  <?= $this->Form->input('password', [
+                      'label' => ['text' => 'Contraseña','class' => 'col-md-4'],
+                      'templates' => [
+                      'label' => '<label class="col-md-4 control-label text-right mb-0" for="password">Contraseña:</label>',
+                      'input' => '<div class="col-md-6"><input type="password" class="form-control" name="password" placeholder="Contraseña" required/></div>',
+                      'inputContainer' => '<div class="form-group d-flex justify-content-center align-items-center">{{content}}</div>',
+                      'inputContainerError' => '<div class="form-group d-flex justify-content-center align-items-center has-error">{{content}}{{error}}</div>',
+                      ],
+                  ]);?>
+                  <div class="form-group">
+                    <div class="col-md-8 offset-md-5">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember"> Recuerdame
+                            </label>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="col-md-8 offset-md-2">
+                          <?= $this->Form->submit('Ingresar', ['class' => 'btn btn-block btn-primary']); ?>
+                      </div>
+                  </div>
+
+                  <?= $this->Form->end(); ?>
+
+              </div>
+
+          </div>
       </div>
-    </div>
   </div>
-</div>
