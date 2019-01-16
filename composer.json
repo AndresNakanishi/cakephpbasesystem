@@ -9,7 +9,8 @@
         "cakephp/cakephp": "3.7.*",
         "cakephp/migrations": "@stable",
         "cakephp/plugin-installer": "^1.0",
-        "mobiledetect/mobiledetectlib": "2.*"
+        "mobiledetect/mobiledetectlib": "2.*",
+        "robmorgan/phinx": "^0.10.6"
     },
     "require-dev": {
         "cakephp/bake": "^1.9.0",
