@@ -18,12 +18,7 @@ class UsersController extends AppController
 
     public function dashboard()
     {
-        $this->paginate = [
-            'contain' => ['Profiles']
-        ];
-        $users = $this->paginate($this->Users);
-
-        $this->set(compact('users'));
+        $this->viewBuilder()->setLayout('system-default');
     }
 
     public function view($id = null)
