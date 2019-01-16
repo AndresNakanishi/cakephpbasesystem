@@ -13,8 +13,9 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gestión</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>/users">Usuarios</a>
-            <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>/profiles">Perfiles</a>
+            <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>dashboard">Usuarios</a>
+            <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>profiles">Perfiles</a>
+            <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>logout">Salir</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Separated link</a>
           </div>

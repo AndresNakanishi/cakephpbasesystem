@@ -17,7 +17,13 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->applyMiddleware('csrf');
 
 
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'home']);
-    $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+    Router::scope('/', function ($routes) {
+        $routes->connect('/', ['controller' => 'Pages', 'action' => 'home']);
+        $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+        $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+        $routes->connect('/dashboard', ['controller' => 'Users', 'action' => 'dashboard']);
+        $routes->fallbacks(DashedRoute::class);
+    });
+    
     $routes->fallbacks(DashedRoute::class);
 });

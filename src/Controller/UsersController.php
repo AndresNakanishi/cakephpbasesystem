@@ -16,7 +16,7 @@ class UsersController extends AppController
     }
 
 
-    public function index()
+    public function dashboard()
     {
         $this->paginate = [
             'contain' => ['Profiles']

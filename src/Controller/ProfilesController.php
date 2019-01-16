@@ -13,6 +13,11 @@ use App\Controller\AppController;
 class ProfilesController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+    }
+
     /**
      * Index method
      *
