@@ -9,6 +9,7 @@ $this->assign('title', $title);?>
 	        </div>
 	    </div>
 	</div>
+	<?= $this->Flash->render() ?>
 	<div class="card mt-4">
 		<div class="card-header bg-dark text-white">
 		   <strong>Usuarios</strong>
@@ -35,7 +36,7 @@ $this->assign('title', $title);?>
 		        		<td class="text-center"><?= $user->profile->name; ?></td>
 		        		<td class="text-center">
 							<?php if ($user->active): ?>
-								<span class="badge badge-pill badge-success">Activo <i class="far fa-check-circle"></i></span>
+								<span class="badge badge-pill badge-primary">Activo <i class="far fa-check-circle"></i></span>
 							<?php else: ?>
 								<span class="badge badge-pill badge-danger">Inactivo <i class="far fa-times-circle"></i></span>
 							<?php endif ?>

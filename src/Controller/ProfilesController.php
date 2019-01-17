@@ -25,9 +25,9 @@ class ProfilesController extends AppController
      */
     public function index()
     {
-        $profiles = $this->paginate($this->Profiles);
-
-        $this->set(compact('profiles'));
+        $this->viewBuilder()->setLayout('system-datatables');
+        $profiles = $this->Profiles->find('all',['conditions' => ['code <>' => 'GOD']])->all();
+        $this->set('profiles', $profiles);
     }
 
     /**
