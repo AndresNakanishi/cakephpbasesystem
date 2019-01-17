@@ -25,7 +25,7 @@
         <i class="fas fa-user-circle fa-fw"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>users">Usuarios</a>
+        <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>users/config/<?= $Auth->user('id'); ?>">Mi Perfil</a>
         <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>profiles">Perfiles</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
