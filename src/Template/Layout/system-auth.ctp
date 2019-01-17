@@ -8,6 +8,8 @@
     <?= $this->Html->meta('icon', 'img/favicon.png', ['type' => 'image/png']) ?>
     <!-- CSS -->
     <?= $this->Html->css('bootstrap.min.css') ?>
+    <?= $this->Html->css('all.css') ?>
+    <?= $this->Html->css('datatables.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -20,7 +22,9 @@
     </div>
     <!-- Javascript -->
     <?= $this->Html->script('jquery.js') ?>
-    <?= $this->Html->script('bootstrap.min.js') ?>
+    <?= $this->Html->script('bootstrap.js') ?>
+    <?= $this->Html->script('jquery.easing.js') ?>
     <?= $this->Html->script('popper.js') ?>
+    <?= $this->Html->script('admin.js') ?>
 </body>
 </html>

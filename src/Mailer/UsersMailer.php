@@ -16,15 +16,16 @@ class UsersMailer extends Mailer
      */
     static public $name = 'Users';
 
-    public function welcome($user, $newpassword){
+    public function recover($user, $newpassword){
     	//envío el mail
         $this->to($user->email)
-        ->transport('mailjet')
+        ->profile('mailer')
         ->emailFormat('html')
         ->template('recovery_password')
+        ->layout('default')
         ->viewVars(['password' => $newpassword])
         ->viewVars(['username' => $user->username])
         ->viewVars(['name' => $user->name])
-        ->subject('SAEC - Recuperar Contraseña');
+        ->subject('Recuperar Contraseña');
     }
 }

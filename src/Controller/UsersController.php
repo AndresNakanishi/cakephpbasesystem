@@ -47,7 +47,7 @@ class UsersController extends AppController
      */
     public function add()
     {
-        $this->viewBuilder()->setLayout('default');
+        $this->viewBuilder()->setLayout('system-default');
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();            
@@ -144,17 +144,8 @@ class UsersController extends AppController
                 $user->password = $newpassword;
                 if ($user) {
                     try {
-                        //envío el mail
-                        $email = new Email();
-                        $email->viewVars(['password' => $newpassword]);
-                        $email->viewVars(['username' => $user->username]);
-                        $email->viewVars(['name' => $user->name]);
-                        $email->profile('default');
-                        $email->template('recovery_password')
-                            ->emailFormat('html')
-                            ->to($user->email)
-                            ->subject('SAEC - Recuperar Contraseña')
-                            ->send();
+                        $this->getMailer('Users')->send('recover', [$user, $newpassword]);
+                        $this->Users->save($user);
                         $this->Flash->success(__('Ha sido enviado un email a su correo.'));
                     } catch (\Exception $e) {                      
                         $this->Flash->error(__('Error en el envío de mail.'));
