@@ -35,13 +35,15 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
-    <!-- Javascript -->
+    <!-- Bootstrap core JavaScript-->
     <?= $this->Html->script('jquery.js') ?>
     <?= $this->Html->script('bootstrap.js') ?>
+    <!-- Core plugin JavaScript-->
     <?= $this->Html->script('jquery.easing.js') ?>
-    <?= $this->Html->script('popper.js') ?>
+    <!-- Page level plugin JavaScript-->
     <?= $this->Html->script('jquery.datatables.js') ?>
     <?= $this->Html->script('datatables.js') ?>
+    <!-- Custom scripts for all pages-->
     <?= $this->Html->script('admin.js') ?>
     <?= $this->Html->script('datatables.system.js') ?>
 </body>

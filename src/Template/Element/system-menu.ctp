@@ -31,6 +31,9 @@
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
       </div>
     </li>
+    <li class="nav-item">
+      <a href="<?php echo $this->Url->build('/', true) ?>logout" title="Salir" class="nav-link"><i class="fas fa-sign-out-alt"></i></a>
+    </li>
   </ul>
 
 </nav>
