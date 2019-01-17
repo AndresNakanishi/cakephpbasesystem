@@ -13,12 +13,20 @@ class UsersController extends AppController
     public function initialize()
     {
         parent::initialize();
+        $this->Auth->allow(['login','register','recoverPassword']);
     }
 
 
     public function dashboard()
     {
         $this->viewBuilder()->setLayout('system-default');
+    }
+
+    public function index()
+    {
+        $this->viewBuilder()->setLayout('system-datatables');
+        $users = $this->Users->find('all',['contain' => 'Profiles'])->where(['Profiles.code <>' => 'GOD'])->all();
+        $this->set('users', $users);
     }
 
     public function view($id = null)
@@ -103,7 +111,7 @@ class UsersController extends AppController
     // LOGIN //
     public function login()
     {
-        $this->viewBuilder()->setLayout('login');
+        $this->viewBuilder()->setLayout('system-auth');
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
@@ -118,5 +126,52 @@ class UsersController extends AppController
     public function logout()
     {
         return $this->redirect($this->Auth->logout());
+    }
+
+
+    // RECOVER PASSWORD //
+    public function recoverPassword()
+    {
+        $this->viewBuilder()->setLayout('system-auth');
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $user = $this->Users->find('all')->where(['email' => $data['email'], 'active' => 1])->first();
+
+            if ($user !== null){
+                $newpassword = $this->generate_password(8);
+                $user->password = $newpassword;
+                if ($user) {
+                    try {
+                        //envío el mail
+                        $email = new Email();
+                        $email->viewVars(['password' => $newpassword]);
+                        $email->viewVars(['username' => $user->username]);
+                        $email->viewVars(['name' => $user->name]);
+                        $email->transport('mailjet');
+                        $email->template('recovery_password')
+                            ->emailFormat('html')
+                            ->to($user->email)
+                            ->subject('SAEC - Recuperar Contraseña')
+                            ->send();
+                        $this->Flash->success(__('Ha sido enviado un email a su correo.'));
+                    } catch (\Exception $e) {                      
+                        $this->Flash->error(__('Error en el envío de mail.'));
+                    }
+                    return $this->redirect(['action' => 'login']);
+                } else {
+                    $this->Flash->error(__('No se ha podido recuperar la contraseña, contactese con el Área de Contratistas.'));
+                }
+            } else {
+                $this->Flash->error(__('Usuario inválido.'));
+            }
+        }
+
+    }
+
+
+    private function generate_password($length = 8) {
+       $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-?";
+       $password = substr(str_shuffle($chars), 0, $length);
+       return $password;
     }
 }

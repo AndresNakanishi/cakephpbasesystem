@@ -1,48 +1,40 @@
-<div class="row d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-      <div class="col-md-6">
-          <?= $this->Flash->render() ?>
-          <div class="card">
-              <div class="card-header">Login</div>
+<?php $title = 'System | Login';
+$this->assign('title', $title);?>
 
-              <div class="card-body">
-                <?= $this->Form->create(); ?>
-                  <?= $this->Form->input('username', [
-                      'label' => ['text' => 'Usuario','class' => 'col-md-4'],
-                      'templates' => [
-                      'label' => '<label class="col-md-4 control-label text-right mb-0" for="username">Usuario:</label>',
-                      'input' => '<div class="col-md-6"><input type="text" class="form-control" name="username" placeholder="Usuario" required/></div>',
-                      'inputContainer' => '<div class="form-group d-flex justify-content-center align-items-center">{{content}}</div>',
-                      'inputContainerError' => '<div class="form-group d-flex justify-content-center align-items-center has-error">{{content}}{{error}}</div>',
-                      ],
-                  ]);?>
-                  <?= $this->Form->input('password', [
-                      'label' => ['text' => 'Contraseña','class' => 'col-md-4'],
-                      'templates' => [
-                      'label' => '<label class="col-md-4 control-label text-right mb-0" for="password">Contraseña:</label>',
-                      'input' => '<div class="col-md-6"><input type="password" class="form-control" name="password" placeholder="Contraseña" required/></div>',
-                      'inputContainer' => '<div class="form-group d-flex justify-content-center align-items-center">{{content}}</div>',
-                      'inputContainerError' => '<div class="form-group d-flex justify-content-center align-items-center has-error">{{content}}{{error}}</div>',
-                      ],
-                  ]);?>
-                  <div class="form-group">
-                    <div class="col-md-8 offset-md-5">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="remember"> Recuerdame
-                            </label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                      <div class="col-md-8 offset-md-2">
-                          <?= $this->Form->submit('Ingresar', ['class' => 'btn btn-block btn-primary']); ?>
-                      </div>
-                  </div>
-
-                  <?= $this->Form->end(); ?>
-
-              </div>
-
-          </div>
+<div class="card card-login mx-auto mt-5 col-md-4">
+  <div class="card-header"><?= $title; ?></div>
+  <div class="card-body">
+    <?= $this->Form->create(); ?>
+      <?= $this->Form->input('username', [
+          'templates' => [
+          'label' => '',
+          'input' => '<div class="form-label-group"><input type="text" class="form-control" name="username" placeholder="Usuario" required/></div>',
+          'inputContainer' => '<div class="form-group">{{content}}</div>',
+          'inputContainerError' => '<div class="form-group d-flex justify-content-center align-items-center has-error">{{content}}{{error}}</div>',
+          ],
+      ]);?>
+      <?= $this->Form->input('password', [
+          'templates' => [
+          'label' => '',
+          'input' => '<div class="form-label-group"><input type="password" class="form-control" name="password" placeholder="Contraseña" required/></div>',
+          'inputContainer' => '<div class="form-group">{{content}}</div>',
+          'inputContainerError' => '<div class="form-group d-flex justify-content-center align-items-center has-error">{{content}}{{error}}</div>',
+          ],
+      ]);?>
+      <?= $this->Flash->render() ?>
+      <div class="form-group">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me">
+            Recordar Contraseña
+          </label>
+        </div>
       </div>
+      <?= $this->Form->submit('Ingresar', ['class' => 'btn btn-block btn-primary']); ?>
+    <?= $this->Form->end(); ?>
+    <div class="text-center">
+      <a class="d-block small mt-3" href="<?php echo $this->Url->build('/', true) ?>register">Crea una cuenta</a>
+      <a class="d-block small" href="<?php echo $this->Url->build('/', true) ?>recover-password">¿Olvidaste tu contraseña?</a>
+    </div>
   </div>
+</div>

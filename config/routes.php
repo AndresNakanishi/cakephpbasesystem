@@ -19,8 +19,12 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     Router::scope('/', function ($routes) {
         $routes->connect('/', ['controller' => 'Pages', 'action' => 'home']);
+        // Auth
         $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
         $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+        $routes->connect('/register', ['controller' => 'Users', 'action' => 'register']);
+        $routes->connect('/recover-password', ['controller' => 'Users', 'action' => 'recoverPassword']);
+        // Dashboard
         $routes->connect('/dashboard', ['controller' => 'Users', 'action' => 'dashboard']);
         $routes->fallbacks(DashedRoute::class);
     });

@@ -1,15 +1,9 @@
-<?php 
-
-$system = 'System';
-
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $system ?> |
         <?= $this->fetch('title') ?>
     </title>
     <!-- FAVICON -->

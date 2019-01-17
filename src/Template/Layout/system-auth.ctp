@@ -1,16 +1,9 @@
-<?php 
-
-$system = 'System | Login';
-
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= $system ?>
-    </title>
+    <title><?= $this->fetch('title') ?></title>
     <!-- FAVICON -->
     <?= $this->Html->meta('icon', 'img/favicon.png', ['type' => 'image/png']) ?>
     <!-- CSS -->
@@ -20,7 +13,7 @@ $system = 'System | Login';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
+<body class="bg-dark">
     <?= $this->Flash->render() ?>
     <div class="container">
         <?= $this->fetch('content') ?>
