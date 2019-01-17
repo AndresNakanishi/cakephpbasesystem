@@ -20,6 +20,7 @@ $this->assign('title', $title);?>
 	      ]);?>
       	<?= $this->Form->submit('Recuperar Contraseña', ['class' => 'btn btn-block btn-primary']); ?>
 	  <?= $this->Form->end(); ?>
+      <?= $this->Flash->render() ?>
 	  <div class="text-center">
 	    <a class="d-block small mt-3" href="<?php echo $this->Url->build('/', true) ?>register">¿No tiene una cuenta?</a>
 	    <a class="d-block small" href="<?php echo $this->Url->build('/', true) ?>login">Ingresar</a>

@@ -2,16 +2,21 @@
 $this->assign('title', $title);?>
 
  <div class="container-fluid">
-	<h2><i class="fas fa-users"></i> <?= $title; ?></h2>
-	<hr>
+	<div class="row">
+	    <div class="col-lg-12">
+	        <div class="page-header">
+	        	<h3><i class="fas fa-users"></i> <?= $title; ?></h3>
+	        </div>
+	    </div>
+	</div>
 	<div class="card mt-4">
-		<div class="card-header">
+		<div class="card-header bg-dark text-white">
 		   <strong>Usuarios</strong>
 		</div>
 		<div class="card-body">
 		  <div class="table-responsive">
-		    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-		      <thead>
+		    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+		      <thead class="thead-dark">
 		        <tr>
 		          <th>Nombre</th>
 		          <th>Apellido</th>
@@ -42,7 +47,6 @@ $this->assign('title', $title);?>
 		    </table>
 		  </div>
 		</div>
-	<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 	</div>
 
 </div>

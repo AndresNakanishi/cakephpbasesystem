@@ -4,11 +4,13 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Auth\DefaultPasswordHasher; 
 use Cake\Mailer\Email;
+use Cake\Mailer\MailerAwareTrait;
 use Cake\ORM\TableRegistry;
 use App\Model\Entity\User;
 
 class UsersController extends AppController
 {
+    use MailerAwareTrait;
 
     public function initialize()
     {
@@ -147,7 +149,7 @@ class UsersController extends AppController
                         $email->viewVars(['password' => $newpassword]);
                         $email->viewVars(['username' => $user->username]);
                         $email->viewVars(['name' => $user->name]);
-                        $email->transport('mailjet');
+                        $email->profile('default');
                         $email->template('recovery_password')
                             ->emailFormat('html')
                             ->to($user->email)
@@ -157,7 +159,6 @@ class UsersController extends AppController
                     } catch (\Exception $e) {                      
                         $this->Flash->error(__('Error en el envío de mail.'));
                     }
-                    return $this->redirect(['action' => 'login']);
                 } else {
                     $this->Flash->error(__('No se ha podido recuperar la contraseña, contactese con el Área de Contratistas.'));
                 }
