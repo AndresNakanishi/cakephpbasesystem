@@ -9,6 +9,7 @@ $this->assign('title', $title);?>
 	        </div>
 	    </div>
 	</div>
+
 	<?= $this->Flash->render() ?>
 	<div class="card mt-4">
 		<div class="card-header bg-dark text-white">
@@ -41,7 +42,32 @@ $this->assign('title', $title);?>
 								<span class="badge badge-pill badge-danger">Inactivo <i class="far fa-times-circle"></i></span>
 							<?php endif ?>
 		        		</td>
-		        		<td class="text-center">Acciones Varias</td>
+		        		<td class="text-center">
+	                        <?php if ($user->active): ?>
+	                        	<?= $this->Form->postLink(
+	                                'Deshabilitar', 
+	                                ['action' => 'toggleActive', $user->username], 
+	                                [
+	                                    'confirm' => __('¿Está seguro que desea deshabilitar al usuario {0}?', $user->username),
+	                                    'class' => 'btn btn-sm btn-danger'
+	                                ]
+	                            ) ?>
+	                       	<?php else: ?>
+	                        	<?= $this->Form->postLink(
+	                                'Habilitar', 
+	                                ['action' => 'toggleActive', $user->username], 
+	                                [
+	                                    'confirm' => __('¿Está seguro que desea habilitar al usuario {0}?', $user->username),
+	                                    'class' => 'btn btn-sm btn-danger'
+	                                ]
+	                            ) ?>
+	                        <?php endif ?>
+							<?= $this->Html->link(
+	                            'Editar', 
+	                            ['action' => 'edit', $user->username],
+	                            ['class' => 'btn btn-sm btn-primary']
+	                        ) ?>
+		        		</td>
 		        	</tr>
 		        <?php endforeach ?>
 		      </tbody>
@@ -49,5 +75,9 @@ $this->assign('title', $title);?>
 		  </div>
 		</div>
 	</div>
-
+	<div class="row">
+		<div class="col-lg-12 mt-4 mb-4 d-flex justify-content-start">
+			<a href="<?= $this->Url->build('/', true) ?>users/add" class="btn btn-lg btn-primary"><i class="fas fa-user-plus"></i> Agregar Usuario</a>
+		</div>
+	</div>
 </div>

@@ -16,8 +16,18 @@ class UsersMailer extends Mailer
      */
     static public $name = 'Users';
 
+    public function welcome($user, $password){
+        $this->to($user->email)
+        ->profile('mailer')
+        ->emailFormat('html')
+        ->template('welcome')
+        ->layout('default')
+        ->viewVars(['user' => $user])
+        ->viewVars(['password' => $password])
+        ->subject('¡Bienvenido al Sistema!');
+    }
+
     public function recover($user, $newpassword){
-    	//envío el mail
         $this->to($user->email)
         ->profile('mailer')
         ->emailFormat('html')

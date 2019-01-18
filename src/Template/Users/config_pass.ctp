@@ -55,7 +55,7 @@ $this->assign('title', $title . ' | ' . $user->username);?>
         </div>
 
         <div style="float: left;margin: 20px 0 30px;">
-        	<a href="<?= $this->Url->build('/', true) ?>users/config/<?= $this->request->session()->read('Auth.User.id')?>" class="btn btn-lg btn-primary">Volver</a>
+        	<a href="<?= $this->Url->build('/', true) ?>users/config/<?= $this->request->session()->read('Auth.User.username')?>" class="btn btn-lg btn-primary">Volver</a>
             <?= $this->Form->button(__('Guardar'), [
                 'class' => 'btn btn-danger btn-lg'
             ]) ?>

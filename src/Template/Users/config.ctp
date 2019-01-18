@@ -12,8 +12,8 @@ $this->assign('title', $title . ' | ' . $user->username);?>
 	<?= $this->Flash->render() ?>
 	<div class="row">
 	    <div class="col-lg-12" style="display:flex; justify-content: flex-end;">
-	        <a href="<?= $this->Url->build('/', true) ?>users/configData/<?= $this->request->session()->read('Auth.User.id')?>" class="btn btn-lg btn-primary" style="margin-right: 10px;">Cambiar Mi Información</a>
-	        <a href="<?= $this->Url->build('/', true) ?>users/configPass/<?= $this->request->session()->read('Auth.User.id')?>" class="btn btn-lg btn-primary">Cambiar Contraseña</a>
+	        <a href="<?= $this->Url->build('/', true) ?>users/configData/<?= $this->request->session()->read('Auth.User.username')?>" class="btn btn-lg btn-primary" style="margin-right: 10px;">Cambiar Mi Información</a>
+	        <a href="<?= $this->Url->build('/', true) ?>users/configPass/<?= $this->request->session()->read('Auth.User.username')?>" class="btn btn-lg btn-primary">Cambiar Contraseña</a>
 	    </div>
 	</div>
 	<br>

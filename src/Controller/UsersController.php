@@ -31,15 +31,6 @@ class UsersController extends AppController
         $this->set('users', $users);
     }
 
-    public function view($id = null)
-    {
-        $user = $this->Users->get($id, [
-            'contain' => ['Profiles']
-        ]);
-
-        $this->set('user', $user);
-    }
-
     /**
      * Add method
      *
@@ -50,17 +41,24 @@ class UsersController extends AppController
         $this->viewBuilder()->setLayout('system-default');
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $data = $this->request->getData();            
+            $data = $this->request->getData();
+            $newpassword = $this->generate_password(8);               
+            $data['password'] = $newpassword;
+            $data['active'] = 1;
+            $data['created_at'] = date('Y-m-d H:i:s');
+            $data['updated_at'] = date('Y-m-d H:i:s');
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
-
-                $this->Flash->success(__('Un nuevo usuario ha sido habilitado correctamente.'));
-
-                return $this->redirect(['action' => 'index']);
+                try {
+                    $this->getMailer('Users')->send('welcome', [$user, $newpassword]);
+                    $this->Flash->success(__('Un nuevo usuario ha sido habilitado correctamente.'));
+                    return $this->redirect(['action' => 'index']);
+                } catch (Exception $e) {
+                    $this->Flash->error(__('El usuario no ha podido ser habilitado.'));
+                }
             }
-            $this->Flash->error(__('El usuario no ha podido ser habilitado.'));
         }
-        $profiles = $this->Users->Profiles->find('list')->order(['name' => 'ASC']);
+        $profiles = $this->Users->Profiles->find('list', ['conditions' => ['code <>' => 'GOD']])->order(['name' => 'ASC']);
         $this->set(compact('user', 'profiles'));
     }
 
@@ -71,21 +69,23 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit($username = null)
     {
-        $user = $this->Users->get($id, [
-            'contain' => []
-        ]);
+        $this->viewBuilder()->setLayout('system-default');
+        $user = $this->Users->find('all', ['conditions' => ['username' => $username]])->contain('Profiles')->first();
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            $data = $this->request->getData();
+            if ($data !== false) {
+                $user = $this->Users->patchEntity($user, $data);
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('Se han guardado los cambios exitosamente.'));
+                    return $this->redirect(['action' => 'index']);
+                }
+            } else {
+                $this->Flash->error(__('No hubo cambios en el registro.'));
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $profiles = $this->Users->Profiles->find('list', ['limit' => 200]);
+        $profiles = $this->Users->Profiles->find('list', ['conditions' => ['code <>' => 'GOD']])->order(['name' => 'ASC']);
         $this->set(compact('user', 'profiles'));
     }
 
@@ -112,21 +112,21 @@ class UsersController extends AppController
 
     // Configurar el perfil del usuario
 
-    public function configData($id = null)
+    public function configData($username = null)
     {
         $session = $this->request->session();
         $this->viewBuilder()->setLayout('system-default');
-        $user = $this->Users->get($id);
-        if (strval($this->Auth->user('id')) !== $id) {
+        $user = $this->Users->find('all', ['conditions' => ['username' => $username]])->first();
+        if ($this->Auth->user('username') !== $username) {
             $this->Flash->error(__('No tiene acceso a la información de otra cuenta.'));
-            return $this->redirect(['action' => 'config',$this->Auth->user('id')]);
+            return $this->redirect(['action' => 'config',$this->Auth->user('username')]);
         }
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Se han actualizado los cambios.'));
-                return $this->redirect(['action' => 'config',$this->Auth->user('id')]);
+                return $this->redirect(['action' => 'config',$this->Auth->user('username')]);
             } else {
                 $this->Flash->error(__('No se han podido actualizar los cambios.'));
             }
@@ -136,14 +136,14 @@ class UsersController extends AppController
 
     // Cambiar la Contraseña
 
-    public function configPass($id = null)
+    public function configPass($username = null)
     {
         $session = $this->request->session();
         $this->viewBuilder()->setLayout('system-default');
-        $user = $this->Users->get($id);
-        if (strval($this->Auth->user('id')) !== $id) {
+        $user = $this->Users->find('all', ['conditions' => ['username' => $username]])->first();
+        if ($this->Auth->user('username') !== $username) {
             $this->Flash->error(__('No tiene acceso a la información de otra cuenta.'));
-            return $this->redirect(['action' => 'config',$this->Auth->user('id')]);
+            return $this->redirect(['action' => 'config',$this->Auth->user('username')]);
         }
         if ($this->request->is(['patch', 'post', 'put'])) {
             
@@ -158,20 +158,20 @@ class UsersController extends AppController
             
             if ($password !== $new_password_validate){
                 $this->Flash->error(__('Las contraseñas nuevas no coinciden.'));
-                return $this->redirect(['action' => 'configPass',$this->Auth->user('id')]);
+                return $this->redirect(['action' => 'configPass',$this->Auth->user('username')]);
             }
             
             if  (!(new DefaultPasswordHasher())->check($data['old_password'], $user->password)) {
            
                 $this->Flash->error(__('La contraseña anterior es errónea.'));
-                return $this->redirect(['action' => 'configPass',$this->Auth->user('id')]);
+                return $this->redirect(['action' => 'configPass',$this->Auth->user('username')]);
                
             }
             
             $user = $this->Users->patchEntity($user, $new_password);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Se ha cambiado la contraseña correctamente.'));
-                return $this->redirect(['action' => 'config',$this->Auth->user('id')]);
+                return $this->redirect(['action' => 'config',$this->Auth->user('username')]);
             } else {
                 $this->Flash->error(__('No se ha podido cambiar la contraseña. Por favor conáctese con el administrador del sistema'));
             }
@@ -181,17 +181,15 @@ class UsersController extends AppController
 
     // El usuario ve su propia información...
 
-    public function config($id = null)
+    public function config($username = null)
     {
         $session = $this->request->session();
         $this->viewBuilder()->setLayout('system-default');
-        if (strval($this->Auth->user('id')) !== $id) {
+        if ($this->Auth->user('username') !== $username) {
             $this->Flash->error(__('No puede editar la información sensible de otro usuario.'));
             return $this->redirect(['action' => 'dashboard']);
         }
-        $user = $this->Users->get($id, [
-            'contain' => ['Profiles'],
-        ]);
+        $user = $this->Users->find('all', ['conditions' => ['username' => $username]])->contain('Profiles')->first();
         $this->set('user', $user);
     }
 
@@ -243,6 +241,44 @@ class UsersController extends AppController
             }
         }
 
+    }
+
+
+    // Activar - Desactivar
+    public function toggleActive($username = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        
+        $user = $this->Users->find('all', ['conditions' => ['username' => $username]])->first();
+        $deleted = false;
+
+        if ($user->active == 0) {
+            $user->active = 1;
+        } else {
+            $user->active = 0;
+        }
+
+        try {
+            $deleted = $this->Users->save($user);
+        } catch(\Exception $e) {
+            
+        }
+
+        if ($deleted) {
+            if ($user->active == 0) {
+                $this->Flash->success(__('El usuario ha sido deshabilitado.'));
+            } else {
+                $this->Flash->success(__('El usuario ha sido habilitado.'));
+            }
+        } else {
+            if ($user->active == 0) {
+                $this->Flash->error(__('El usuario no ha podido ser habilitado. Por favor, intente nuevamente.'));
+            } else {
+                $this->Flash->error(__('El usuario no ha podido ser deshabilitado. Por favor, intente nuevamente.'));
+            }
+        }
+
+        return $this->redirect(['action' => 'index']);
     }
 
     // Generar Contraseña
