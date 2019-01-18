@@ -21,7 +21,7 @@
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<?php echo $this->Url->build('/', true) ?>dashboard">
+    <a class="nav-link" href="<?php echo $this->Url->build('/', true) ?>logout">
       <i class="fas fa-sign-out-alt"></i>
       <span>Salir</span>
     </a>

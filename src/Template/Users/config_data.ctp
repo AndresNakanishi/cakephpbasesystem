@@ -5,7 +5,7 @@ $this->assign('title', $title . ' | ' . $user->username);?>
 	<div class="row">
 	    <div class="col-lg-12">
 	        <div class="page-header">
-	        	<h3><i class="fas fa-address-card"></i> Cambiar Información - <?= $user->username; ?></h3>
+	        	<h3><i class="fas fa-user-circle"></i> Cambiar Información - <?= $user->username; ?></h3>
 	        </div>
 	    </div>
 	</div>

@@ -22,17 +22,12 @@
   <ul class="navbar-nav ml-auto ml-md-0">
     <li class="nav-item dropdown no-arrow">
       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-user-circle fa-fw"></i>
+        <?= $Auth->user('username'); ?> <i class="fas fa-caret-down"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>users/config/<?= $Auth->user('username'); ?>">Mi Perfil</a>
-        <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>profiles">Perfiles</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+        <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>users/config/<?= $Auth->user('username'); ?>"><i class="fas fa-user-circle"></i> Mi Perfil</a>
+        <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>logout"><i class="fas fa-sign-out-alt"></i> Salir</a>
       </div>
-    </li>
-    <li class="nav-item">
-      <a href="<?php echo $this->Url->build('/', true) ?>logout" title="Salir" class="nav-link"><i class="fas fa-sign-out-alt"></i></a>
     </li>
   </ul>
 

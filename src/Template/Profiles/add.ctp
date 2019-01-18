@@ -1,28 +1,51 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Profile $profile
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Profiles'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Permission Profiles'), ['controller' => 'PermissionProfiles', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Permission Profile'), ['controller' => 'PermissionProfiles', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="profiles form large-9 medium-8 columns content">
-    <?= $this->Form->create($profile) ?>
-    <fieldset>
-        <legend><?= __('Add Profile') ?></legend>
-        <?php
-            echo $this->Form->control('code');
-            echo $this->Form->control('name');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<?php $title = "Agregar Perfil"; 
+$this->assign('title', $title);?>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h3><i class="fas fa-plus-circle"></i> <?= $title; ?></h3>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <?= $this->Flash->render() ?>
+    
+    <div class="col-lg-12">
+        <?= $this->Form->create($profile) ?>        
+        <div class="form-group">
+            <?= $this->Form->control('code', [
+                'class' => 'form-control',
+                'label' => [
+                    'class' => 'control-label',
+                    'text' => 'Código:'
+                ],
+                'placeholder' => 'Máximo de 8 Letras',   
+                'required',
+                'autocomplete' => 'off'
+            ]) ?>
+        </div>
+        <div class="form-group">
+            <?= $this->Form->control('name', [
+                'class' => 'form-control',
+                'label' => [
+                    'class' => 'control-label',
+                    'text' => 'Nombre del Perfil:',
+                ],
+                'placeholder' => 'Ingrese el nombre del perfil',   
+                'required',
+                'autocomplete' => 'off'
+            ]) ?>
+        </div>
+
+        <div style="float: left;margin: 20px 0 30px;">
+            <a href="<?= $this->Url->build('/', true) ?>profiles/" class="btn btn-lg btn-primary">Volver</a>
+            <?= $this->Form->button(__('Agregar'), [
+                'class' => 'btn btn-danger btn-lg'
+            ]) ?>
+        </div>
+        
+        <?= $this->Form->end() ?>
+    </div>
 </div>
