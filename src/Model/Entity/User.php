@@ -15,9 +15,10 @@ use Cake\ORM\TableRegistry;
  * @property string $name
  * @property string $surname
  * @property string $password
+ * @property string $avatar
  * @property bool $active
- * @property \Cake\I18n\FrozenTime $created_at
- * @property \Cake\I18n\FrozenTime $updated_at
+ * @property \Cake\I18n\FrozenTime|null $created_at
+ * @property \Cake\I18n\FrozenTime|null $updated_at
  *
  * @property \App\Model\Entity\Profile $profile
  */
@@ -40,6 +41,7 @@ class User extends Entity
         'name' => true,
         'surname' => true,
         'password' => true,
+        'avatar' => true,
         'active' => true,
         'created_at' => true,
         'updated_at' => true,

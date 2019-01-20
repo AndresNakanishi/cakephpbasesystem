@@ -45,12 +45,11 @@ class UsersController extends AppController
             $newpassword = $this->generate_password(8);               
             $data['password'] = $newpassword;
             $data['active'] = 1;
-            $data['created_at'] = date('Y-m-d H:i:s');
-            $data['updated_at'] = date('Y-m-d H:i:s');
+            $data['avatar'] = 'https://ui-avatars.com/api/?font-size=0.33&background=0D8ABC&color=fff&'.$data['name'].'+'.$data['surname'];
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 try {
-                    $this->getMailer('Users')->send('welcome', [$user, $newpassword]);
+                    $this->getMailer('Users')->send('welcomeMember', [$user, $newpassword]);
                     $this->Flash->success(__('Un nuevo usuario ha sido habilitado correctamente.'));
                     return $this->redirect(['action' => 'index']);
                 } catch (Exception $e) {
@@ -191,6 +190,35 @@ class UsersController extends AppController
         }
         $user = $this->Users->find('all', ['conditions' => ['username' => $username]])->contain('Profiles')->first();
         $this->set('user', $user);
+    }
+
+    // Register
+    public function register() {
+        $this->viewBuilder()->setLayout('system-auth');
+        $user = $this->Users->newEntity();
+        $profile = TableRegistry::get('profiles')->find('all', ['conditions' => ['code' => 'USER']])->first();
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $password = $data['password'];
+            $password_validate = $data['password_validation'];
+            $data['active'] = 1;
+            $data['profile_id'] = $profile->id;         
+            $data['avatar'] = 'https://ui-avatars.com/api/?font-size=0.33&background=0D8ABC&color=fff&'.$data['name'].'+'.$data['surname'];
+            if ($password !== $password_validate){
+                $this->Flash->error(__('Las contraseñas nuevas no coinciden.'));
+                return $this->redirect(['action' => 'register']);
+            }
+            $user = $this->Users->patchEntity($user, $data);
+            if ($this->Users->save($user)) {
+                try {
+                    $this->getMailer('Users')->send('welcome', [$user]);
+                    $this->Flash->success(__('Te has registrado correctamente!'));
+                    return $this->redirect(['action' => 'login']);
+                } catch (Exception $e) {
+                    $this->Flash->error(__('Hubo un error'));
+                }
+            }
+        }
     }
 
     // LOGIN //

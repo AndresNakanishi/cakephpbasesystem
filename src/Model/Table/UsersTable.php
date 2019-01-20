@@ -1,8 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\Auth\DigestAuthenticate;
-use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -24,19 +22,6 @@ use Cake\Validation\Validator;
  */
 class UsersTable extends Table
 {
-
-    public function beforeSave(Event $event)
-    {
-        $entity = $event->getData('entity');
-
-        // Make a password for digest auth.
-        $entity->digest_hash = DigestAuthenticate::password(
-            $entity->username,
-            $entity->password,
-            env('SERVER_NAME')
-        );
-        return true;
-    }
 
     /**
      * Initialize method
@@ -102,19 +87,23 @@ class UsersTable extends Table
             ->notEmpty('password');
 
         $validator
+            ->scalar('avatar')
+            ->maxLength('avatar', 200)
+            ->requirePresence('avatar', 'create')
+            ->notEmpty('avatar');
+
+        $validator
             ->boolean('active')
             ->requirePresence('active', 'create')
             ->notEmpty('active');
 
         $validator
             ->dateTime('created_at')
-            ->requirePresence('created_at', 'create')
-            ->notEmpty('created_at');
+            ->allowEmpty('created_at');
 
         $validator
             ->dateTime('updated_at')
-            ->requirePresence('updated_at', 'create')
-            ->notEmpty('updated_at');
+            ->allowEmpty('updated_at');
 
         return $validator;
     }

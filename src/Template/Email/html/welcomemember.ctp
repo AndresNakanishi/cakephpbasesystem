@@ -18,10 +18,11 @@
                 <tr>
                     <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
                         <h1 style="margin: 0 0 10px; font-size: 25px; line-height: 30px; color: #333333; font-weight: normal;">
-							<?= utf8_encode('Bienvenido '.$user->name.'!!') ?>
+                            <?= utf8_encode('Bienvenido '.$user->name.'!!') ?>
                         </h1>
                         <p style="margin: 0 0 10px;">Usuario: <strong><?= $user->username; ?></strong></p>
                         <p style="margin: 0 0 20px;">Email asociado: <strong><?php echo $user->email; ?></strong></p>
+                        <p style="margin: 0 0 20px;">Password generado: <strong><?php echo $password; ?></strong></p>
                         <p style="margin: 0 0 10px;">Atentamente</p>
                         <p style="margin: 0 0 10px;">La Gerencia</p>
                     </td>
