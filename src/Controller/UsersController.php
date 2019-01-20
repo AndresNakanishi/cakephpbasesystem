@@ -45,7 +45,7 @@ class UsersController extends AppController
             $newpassword = $this->generate_password(8);               
             $data['password'] = $newpassword;
             $data['active'] = 1;
-            $data['avatar'] = 'https://ui-avatars.com/api/?font-size=0.33&background=0D8ABC&color=fff&'.$data['name'].'+'.$data['surname'];
+            $data['avatar'] = 'https://ui-avatars.com/api/?font-size=0.33&background=0D8ABC&color=fff&name='.$data['name'].'+'.$data['surname'];
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 try {
@@ -182,7 +182,7 @@ class UsersController extends AppController
             $password_validate = $data['password_validation'];
             $data['active'] = 1;
             $data['profile_id'] = $profile->id;         
-            $data['avatar'] = 'https://ui-avatars.com/api/?font-size=0.33&background=0D8ABC&color=fff&'.$data['name'].'+'.$data['surname'];
+            $data['avatar'] = 'https://ui-avatars.com/api/?font-size=0.33&background=0D8ABC&color=fff&name='.$data['name'].'+'.$data['surname'];
             if ($password !== $password_validate){
                 $this->Flash->error(__('Las contraseñas nuevas no coinciden.'));
                 return $this->redirect(['action' => 'register']);
