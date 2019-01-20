@@ -89,8 +89,7 @@ class UsersTable extends Table
         $validator
             ->scalar('avatar')
             ->maxLength('avatar', 200)
-            ->requirePresence('avatar', 'create')
-            ->notEmpty('avatar');
+            ->allowEmpty('avatar');
 
         $validator
             ->boolean('active')

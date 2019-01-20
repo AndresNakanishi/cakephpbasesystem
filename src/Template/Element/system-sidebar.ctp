@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
-  <li class="nav-item">
+  <li class="nav-item <?php if($this->request->action == 'dashboard'){ echo 'active';} ?>">
     <a class="nav-link" href="<?php echo $this->Url->build('/', true) ?>dashboard">
       <i class="fas fa-columns"></i>
       <span>Dashboard</span>

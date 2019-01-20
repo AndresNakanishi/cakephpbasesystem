@@ -22,7 +22,12 @@
   <ul class="navbar-nav ml-auto ml-md-0">
     <li class="nav-item dropdown no-arrow">
       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <?= $Auth->user('username'); ?> <i class="fas fa-caret-down"></i>
+      <?php if ($Auth->user('avatar') !== null): ?>
+        <img class="rounded-circle avatar" src="<?= $Auth->user('avatar'); ?>" alt="User Avatar">
+      <?php else: ?>
+        <?= $Auth->user('username'); ?> 
+      <?php endif ?>
+      <i class="fas fa-caret-down"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
         <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>users/config/<?= $Auth->user('username'); ?>"><i class="fas fa-user-circle"></i> Mi Perfil</a>
