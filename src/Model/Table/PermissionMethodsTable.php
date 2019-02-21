@@ -7,20 +7,21 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * PermissionFunctions Model
+ * PermissionMethods Model
  *
  * @property \App\Model\Table\PermissionsTable|\Cake\ORM\Association\BelongsTo $Permissions
- * @property \App\Model\Table\FunctionsTable|\Cake\ORM\Association\BelongsTo $Functions
+ * @property \App\Model\Table\MethodsTable|\Cake\ORM\Association\BelongsTo $Methods
  *
- * @method \App\Model\Entity\PermissionFunction get($primaryKey, $options = [])
- * @method \App\Model\Entity\PermissionFunction newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\PermissionFunction[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\PermissionFunction|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\PermissionFunction patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\PermissionFunction[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\PermissionFunction findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\PermissionMethod get($primaryKey, $options = [])
+ * @method \App\Model\Entity\PermissionMethod newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\PermissionMethod[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\PermissionMethod|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\PermissionMethod|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\PermissionMethod patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\PermissionMethod[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\PermissionMethod findOrCreate($search, callable $callback = null, $options = [])
  */
-class PermissionFunctionsTable extends Table
+class PermissionMethodsTable extends Table
 {
 
     /**
@@ -33,7 +34,7 @@ class PermissionFunctionsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('permission_functions');
+        $this->setTable('permission_methods');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
@@ -41,8 +42,8 @@ class PermissionFunctionsTable extends Table
             'foreignKey' => 'permission_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Functions', [
-            'foreignKey' => 'function_id',
+        $this->belongsTo('Methods', [
+            'foreignKey' => 'method_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -56,7 +57,7 @@ class PermissionFunctionsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
+            ->nonNegativeInteger('id')
             ->allowEmpty('id', 'create');
 
         return $validator;
@@ -72,7 +73,7 @@ class PermissionFunctionsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['permission_id'], 'Permissions'));
-        $rules->add($rules->existsIn(['function_id'], 'Functions'));
+        $rules->add($rules->existsIn(['method_id'], 'Methods'));
 
         return $rules;
     }

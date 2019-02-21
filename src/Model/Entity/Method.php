@@ -4,16 +4,16 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Function Entity
+ * Method Entity
  *
  * @property int $id
  * @property string $name
  * @property string $controller_name
  * @property string $action_name
  *
- * @property \App\Model\Entity\PermissionFunction[] $permission_functions
+ * @property \App\Model\Entity\PermissionMethod[] $permission_methods
  */
-class Function extends Entity
+class Method extends Entity
 {
 
     /**
@@ -29,6 +29,6 @@ class Function extends Entity
         'name' => true,
         'controller_name' => true,
         'action_name' => true,
-        'permission_functions' => true
+        'permission_methods' => true
     ];
 }

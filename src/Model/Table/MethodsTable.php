@@ -7,20 +7,20 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Functions Model
+ * Methods Model
  *
- * @property \App\Model\Table\PermissionFunctionsTable|\Cake\ORM\Association\HasMany $PermissionFunctions
+ * @property \App\Model\Table\PermissionMethodsTable|\Cake\ORM\Association\HasMany $PermissionMethods
  *
- * @method \App\Model\Entity\Function get($primaryKey, $options = [])
- * @method \App\Model\Entity\Function newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Function[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Function|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Function|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Function patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Function[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Function findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Method get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Method newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Method[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Method|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Method|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Method patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Method[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Method findOrCreate($search, callable $callback = null, $options = [])
  */
-class FunctionsTable extends Table
+class MethodsTable extends Table
 {
 
     /**
@@ -33,12 +33,12 @@ class FunctionsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('functions');
+        $this->setTable('methods');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->hasMany('PermissionFunctions', [
-            'foreignKey' => 'function_id'
+        $this->hasMany('PermissionMethods', [
+            'foreignKey' => 'method_id'
         ]);
     }
 

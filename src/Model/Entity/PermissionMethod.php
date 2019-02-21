@@ -4,16 +4,16 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * PermissionFunction Entity
+ * PermissionMethod Entity
  *
  * @property int $id
  * @property int $permission_id
- * @property int $function_id
+ * @property int $method_id
  *
  * @property \App\Model\Entity\Permission $permission
- * @property \App\Model\Entity\Function $function
+ * @property \App\Model\Entity\Method $method
  */
-class PermissionFunction extends Entity
+class PermissionMethod extends Entity
 {
 
     /**
@@ -27,8 +27,8 @@ class PermissionFunction extends Entity
      */
     protected $_accessible = [
         'permission_id' => true,
-        'function_id' => true,
+        'method_id' => true,
         'permission' => true,
-        'function' => true
+        'method' => true
     ];
 }
