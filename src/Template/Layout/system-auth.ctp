@@ -8,23 +8,20 @@
     <?= $this->Html->meta('icon', 'img/favicon.png', ['type' => 'image/png']) ?>
     <!-- CSS -->
     <?= $this->Html->css('bootstrap.min.css') ?>
-    <?= $this->Html->css('all.css') ?>
-    <?= $this->Html->css('datatables.css') ?>
-
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body class="bg-dark">
     <?= $this->Flash->render() ?>
-    <div class="container">
-        <?= $this->fetch('content') ?>
-    </div>
+    <!-- Content -->
+    <?= $this->fetch('content') ?>
     <!-- Javascript -->
     <?= $this->Html->script('jquery.js') ?>
-    <?= $this->Html->script('bootstrap.js') ?>
-    <?= $this->Html->script('jquery.easing.js') ?>
-    <?= $this->Html->script('popper.js') ?>
-    <?= $this->Html->script('admin.js') ?>
+    <?= $this->Html->script('bootstrap.js') ?>  
+    <?= $this->Html->script('bootstrap-switch.js') ?>  
+    <?= $this->Html->script('nouislider.min.js') ?>  
+    <?= $this->Html->script('bootstrap-datepicker.js') ?>  
+    <?= $this->Html->script('landing.js') ?>
 </body>
 </html>

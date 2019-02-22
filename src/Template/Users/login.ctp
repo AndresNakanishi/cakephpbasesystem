@@ -1,6 +1,5 @@
 <?php $title = 'System | Login';
 $this->assign('title', $title);?>
-
 <div class="card card-login mx-auto mt-5 col-md-4">
   <div class="card-header"><?= $title; ?></div>
   <div class="card-body">

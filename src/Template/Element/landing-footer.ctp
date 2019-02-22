@@ -1,7 +1,7 @@
 <!--  End Modal -->
 <footer class="footer" data-background-color="black">
   <div class="container">
-    <div class="copyright" id="copyright">
+    <div class="text-center" style="font-size: .8571em; font-family:Montserrat; " id="copyright">
       &copy;
       <script>
         document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
