@@ -2,8 +2,6 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-use Cake\Auth\DefaultPasswordHasher; 
-use Cake\ORM\TableRegistry;
 
 /**
  * User Entity
@@ -14,8 +12,9 @@ use Cake\ORM\TableRegistry;
  * @property string $email
  * @property string $name
  * @property string $surname
+ * @property string|null $cellphone
  * @property string $password
- * @property string $avatar
+ * @property string|null $avatar
  * @property bool $active
  * @property \Cake\I18n\FrozenTime|null $created_at
  * @property \Cake\I18n\FrozenTime|null $updated_at
@@ -40,6 +39,7 @@ class User extends Entity
         'email' => true,
         'name' => true,
         'surname' => true,
+        'cellphone' => true,
         'password' => true,
         'avatar' => true,
         'active' => true,

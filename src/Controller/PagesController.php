@@ -20,6 +20,5 @@ class PagesController extends AppController
     public function home()
     {
         $this->viewBuilder()->setLayout('guests');
-
     }
 }

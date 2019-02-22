@@ -81,6 +81,11 @@ class UsersTable extends Table
             ->notEmpty('surname');
 
         $validator
+            ->scalar('cellphone')
+            ->maxLength('cellphone', 60)
+            ->allowEmpty('cellphone');
+
+        $validator
             ->scalar('password')
             ->maxLength('password', 200)
             ->requirePresence('password', 'create')

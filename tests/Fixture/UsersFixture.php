@@ -23,6 +23,7 @@ class UsersFixture extends TestFixture
         'email' => ['type' => 'string', 'length' => 120, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'name' => ['type' => 'string', 'length' => 60, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'surname' => ['type' => 'string', 'length' => 60, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'cellphone' => ['type' => 'string', 'length' => 60, 'null' => true, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'password' => ['type' => 'string', 'length' => 200, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'avatar' => ['type' => 'string', 'length' => 200, 'null' => true, 'default' => null, 'collate' => 'utf8mb4_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'active' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
@@ -59,11 +60,12 @@ class UsersFixture extends TestFixture
                 'email' => 'Lorem ipsum dolor sit amet',
                 'name' => 'Lorem ipsum dolor sit amet',
                 'surname' => 'Lorem ipsum dolor sit amet',
+                'cellphone' => 'Lorem ipsum dolor sit amet',
                 'password' => 'Lorem ipsum dolor sit amet',
                 'avatar' => 'Lorem ipsum dolor sit amet',
                 'active' => 1,
-                'created_at' => '2019-01-20 00:59:37',
-                'updated_at' => '2019-01-20 00:59:37'
+                'created_at' => '2019-02-21 22:58:37',
+                'updated_at' => '2019-02-21 22:58:37'
             ],
         ];
         parent::init();
