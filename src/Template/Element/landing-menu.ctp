@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg bg-info fixed-top navbar-transparent " color-on-scroll="400">
   <div class="container">
     <div class="navbar-translate">
-      <a class="navbar-brand" href="<?php echo $this->Url->build('/', true) ?>" rel="tooltip" title="Nakanishi Web" data-placement="bottom" target="_blank">
+      <a class="navbar-brand" href="<?php echo $this->Url->build('/', true) ?>" rel="tooltip" title="Nakanishi Web" data-placement="bottom">
         Sistema Base
       </a>
       <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,6 +43,11 @@
           <a class="nav-link" rel="tooltip" title="Seguinos en Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
             <i class="fab fa-instagram"></i>
             <p class="d-lg-none d-xl-none">Instagram</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" rel="tooltip" title="Ingresa al sistema" data-placement="bottom" href="<?php echo $this->Url->build('/', true) ?>login">
+            <i class="fas fa-sign-in-alt"></i> Login
           </a>
         </li>
       </ul>

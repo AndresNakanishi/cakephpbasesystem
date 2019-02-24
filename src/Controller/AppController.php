@@ -73,6 +73,7 @@ class AppController extends Controller
             $userProfileCode = $user->profile->code;
             $this->set('Auth', $this->Auth);
             $this->set('userProfileCode', $userProfileCode);
+            $this->set('authUser', $user);
         }
 
     }

@@ -1,12 +1,16 @@
-// Call the dataTables jQuery plugin
-$('#dataTable').DataTable( {
-    language: {
-        processing:     "Traitement en cours...",
-        search:         "Buscar&nbsp;:",
+$(document).ready(function() {
+$('#datatable').DataTable({
+  "pagingType": "full_numbers",
+  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+  responsive: true,
+  language: {
+        processing:     "Buscando...",
+        search: "_INPUT_",
+        searchPlaceholder: "Buscar...",
         lengthMenu:    "Mostrar _MENU_ registros",
         info:           "Cantidad de registros: _TOTAL_",
-        infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
-        infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+        infoEmpty:      "No se encontraron registros",
+        infoFiltered:   "(Cantidad de registros filtrados: _MAX_)",
         infoPostFix:    "",
         loadingRecords: "Cargando registros...",
         zeroRecords:    "No existe el registro buscado",
@@ -18,8 +22,10 @@ $('#dataTable').DataTable( {
             last:       "Último"
         }
     }
-} );
+});
 
-$(document).ready(function() {
-  $('#dataTable').DataTable();
+var table = $('#datatable').DataTable();
+
+
+
 });

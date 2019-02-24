@@ -1,29 +1,63 @@
-<!-- Sidebar -->
-<ul class="sidebar navbar-nav">
-  <li class="nav-item <?php if($this->request->action == 'dashboard'){ echo 'active';} ?>">
-    <a class="nav-link" href="<?php echo $this->Url->build('/', true) ?>dashboard">
-      <i class="fas fa-columns"></i>
-      <span>Dashboard</span>
+<div class="sidebar" data-color="orange">
+  <!-- Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"-->
+  <div class="logo">
+    <a href="<?php echo $this->Url->build('/', true) ?>" class="simple-text logo-mini">
+      SB
     </a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fas fa-cogs"></i>
-      <span>Gestión</span>
+    <a href="<?php echo $this->Url->build('/', true) ?>" class="simple-text logo-normal">
+      Sistema Base
     </a>
-    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-      <h6 class="dropdown-header">Gestión de Usuarios:</h6>
-      <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>users"><i class="fas fa-users"></i> Usuarios</a>
-      <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>profiles"><i class="fas fa-address-card"></i> Perfiles</a>
-      <div class="dropdown-divider"></div>
-      <h6 class="dropdown-header">Other Pages:</h6>
-      <a class="dropdown-item" href="<?php echo $this->Url->build('/', true) ?>">404 Page</a>
+  </div>
+  <div class="sidebar-wrapper" id="sidebar-wrapper">
+    <div class="user">
+        <div class="photo">
+            <img src="<?= $authUser->avatar; ?>" alt="User Avatar">
+        </div>
+        <div class="info">
+            <a data-toggle="collapse" href="#collapseExample" class="collapsed" aria-expanded="false">
+                <span>
+                    <?= $authUser->username; ?>
+                    <b class="caret"></b>
+                </span>
+            </a>
+            <div class="clearfix"></div>
+            <div class="collapse" id="collapseExample" style="">
+                <ul class="nav">
+                    <li>
+                        <a href="<?php echo $this->Url->build('/', true) ?>users/config/<?= $authUser->username; ?>">
+                            <span class="sidebar-mini-icon"><i class="fas fa-user"></i></span>
+                            <span class="sidebar-normal">Mi Perfil</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="<?php echo $this->Url->build('/', true) ?>logout">
-      <i class="fas fa-sign-out-alt"></i>
-      <span>Salir</span>
-    </a>
-  </li>
-</ul>
+    <ul class="nav">
+      <li class="<?php if($this->request->controller == 'Users' && $this->request->action == 'dashboard'){ echo 'active';} ?>">
+        <a href="<?php echo $this->Url->build('/', true) ?>dashboard">
+          <i class="now-ui-icons design_app"></i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li class="<?php if($this->request->controller == 'Users' && $this->request->action == 'index'){ echo 'active';} ?>">
+        <a href="<?php echo $this->Url->build('/', true) ?>users">
+          <i class="now-ui-icons users_single-02"></i>
+          <p>Usuarios</p>
+        </a>
+      </li>
+      <li class="<?php if($this->request->controller == 'Profiles'){ echo 'active';} ?>">
+        <a href="<?php echo $this->Url->build('/', true) ?>profiles">
+          <i class="fas fa-address-card"></i> 
+          <p>Perfiles</p>
+        </a>
+      </li>
+      <li>
+        <a href="<?php echo $this->Url->build('/', true) ?>logout">
+          <i class="fas fa-sign-out-alt"></i>
+          <p>Salir</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

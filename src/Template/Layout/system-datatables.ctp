@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
         <?= $this->fetch('title') ?>
     </title>
@@ -10,40 +11,38 @@
     <?= $this->Html->meta('icon', 'img/favicon.png', ['type' => 'image/png']) ?>
     <!-- CSS -->
     <?= $this->Html->css('bootstrap.min.css') ?>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <?= $this->Html->css('all.css') ?>
-    <?= $this->Html->css('datatables.css') ?>
     <?= $this->Html->css('system.css') ?>
-
+    <?= $this->Html->css('custom-system.css') ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body id="page-top">
-    <?= $this->element('system-menu') ?>
+<body>
     <div id="wrapper">
     <?= $this->element('system-sidebar') ?>
-        <div id="content-wrapper">
-            <?= $this->Flash->render() ?>
+        <div class="main-panel" id="main-panel">
+            <?= $this->element('system-menu') ?>
             <?= $this->fetch('content') ?>
             <?= $this->element('system-footer') ?>
         </div>
     </div>
-    <!-- /#wrapper -->
-    
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-    <!-- Bootstrap core JavaScript-->
+    <!-- Javascript -->
     <?= $this->Html->script('jquery.js') ?>
     <?= $this->Html->script('bootstrap.js') ?>
-    <!-- Core plugin JavaScript-->
-    <?= $this->Html->script('jquery.easing.js') ?>
-    <!-- Page level plugin JavaScript-->
+    <?= $this->Html->script('perfect-scrollbar.jquery.min.js') ?>
+    <?= $this->Html->script('bootstrap-notify.js') ?>
     <?= $this->Html->script('jquery.datatables.js') ?>
-    <?= $this->Html->script('datatables.js') ?>
-    <!-- Custom scripts for all pages-->
-    <?= $this->Html->script('admin.js') ?>
     <?= $this->Html->script('datatables.system.js') ?>
+    <?= $this->Html->script('system.js') ?>
+    <?= $this->Html->script('custom-system.js') ?>
+    <?= $this->Flash->render() ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //  Activate the Tooltips
+            $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
+        });
+    </script>
 </body>
 </html>

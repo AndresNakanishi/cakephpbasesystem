@@ -93,7 +93,7 @@ class UsersController extends AppController
     public function configData($username = null)
     {
         $session = $this->request->session();
-        $this->viewBuilder()->setLayout('system-default');
+        $this->autoRender = false;
         $user = $this->Users->find('all', ['conditions' => ['username' => $username]])->first();
         if ($this->Auth->user('username') !== $username) {
             $this->Flash->error(__('No tiene acceso a la información de otra cuenta.'));
@@ -101,6 +101,7 @@ class UsersController extends AppController
         }
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
+            $data['avatar'] = 'https://ui-avatars.com/api/?size=256&font-size=0.33&background=0D8ABC&color=fff&name='.$data['name'].'+'.$data['surname'];
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Se han actualizado los cambios.'));
@@ -109,7 +110,6 @@ class UsersController extends AppController
                 $this->Flash->error(__('No se han podido actualizar los cambios.'));
             }
         } 
-        $this->set('user', $user);
     }
 
     // Cambiar la Contraseña
@@ -124,8 +124,6 @@ class UsersController extends AppController
             return $this->redirect(['action' => 'config',$this->Auth->user('username')]);
         }
         if ($this->request->is(['patch', 'post', 'put'])) {
-            
-         
             $data = $this->request->getData();
             $password = $data['new_password'];
             $new_password_validate = $data['new_password_validation'];
@@ -173,7 +171,7 @@ class UsersController extends AppController
 
     // Register
     public function register() {
-        $this->viewBuilder()->setLayout('system-auth');
+        $this->viewBuilder()->setLayout('login');
         $user = $this->Users->newEntity();
         $profile = TableRegistry::get('profiles')->find('all', ['conditions' => ['code' => 'USER']])->first();
         if ($this->request->is('post')) {
@@ -203,7 +201,7 @@ class UsersController extends AppController
     // LOGIN //
     public function login()
     {
-        $this->viewBuilder()->setLayout('system-auth');
+        $this->viewBuilder()->setLayout('login');
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
@@ -224,7 +222,7 @@ class UsersController extends AppController
     // RECOVER PASSWORD //
     public function recoverPassword()
     {
-        $this->viewBuilder()->setLayout('system-auth');
+        $this->viewBuilder()->setLayout('login');
         if ($this->request->is('post')) {
             $data = $this->request->getData();
             $user = $this->Users->find('all')->where(['email' => $data['email'], 'active' => 1])->first();

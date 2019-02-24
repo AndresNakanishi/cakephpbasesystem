@@ -1,4 +1,16 @@
-<div class="alert alert-dismissible alert-warning">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <?= $message ?>
-</div>
+<script type="text/javascript">
+	$.notify({
+		message: "<?= $message ?>"
+	},{
+		allow_dismiss: false,
+		type: 'warning',
+		animate: {
+			enter: 'animated fadeInDown',
+			exit: 'animated fadeOutUp'
+		},
+		placement: {
+			from: 'top',
+			align: 'center'
+		}
+	});
+</script>
