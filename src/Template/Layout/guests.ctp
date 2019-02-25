@@ -1,7 +1,5 @@
 <?php 
-
 $system = 'System';
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,7 +17,6 @@ $system = 'System';
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <?= $this->Html->css('all.css') ?>
     <?= $this->Html->css('landing.css') ?>
-    <?= $this->Html->css('custom-landing.css') ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>

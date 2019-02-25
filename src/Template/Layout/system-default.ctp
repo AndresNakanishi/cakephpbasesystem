@@ -33,6 +33,8 @@
     <?= $this->Html->script('jquery.js') ?>
     <?= $this->Html->script('bootstrap.js') ?>
     <?= $this->Html->script('perfect-scrollbar.jquery.min.js') ?>
+    <?= $this->Html->script('moment.js') ?>
+    <?= $this->Html->script('sweetalert.js') ?>
     <?= $this->Html->script('chartjs.min.js') ?>
     <?= $this->Html->script('bootstrap-notify.js') ?>
     <?= $this->Html->script('system.js') ?>

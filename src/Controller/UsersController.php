@@ -251,9 +251,7 @@ class UsersController extends AppController
 
     // Activar - Desactivar
     public function toggleActive($username = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        
+    {        
         $user = $this->Users->find('all', ['conditions' => ['username' => $username]])->first();
         $deleted = false;
 

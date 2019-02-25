@@ -40,31 +40,9 @@ $this->assign('title', $title);?>
 						        		</td>
 						        		<td class="text-right">
 					                        <?php if ($user->active): ?>
-					                        	<?= $this->Form->postLink(
-					                                '<i class="fas fa-ban"></i>', 
-					                                ['action' => 'toggleActive', $user->username], 
-					                                [
-					                                	'rel' => 'tooltip',
-					                                	'title' => 'Deshabilitar',
-					                                	'data-placement' => 'left',
-        												'escape' => false,
-					                                    'confirm' => __('¿Está seguro que desea deshabilitar al usuario {0}?', $user->username),
-					                                    'class' => 'btn btn-round btn-danger btn-icon btn-sm'
-					                                ]
-					                            ) ?>
+					                        	<a onclick="system.showSwal('Deshabilitar','¿Deshabilitar al usuario '+'<?= $user->username ?>'+' ?','delete', '<?= $this->Url->build('/', true) ?>users/toggleActive/<?= $user->username; ?>')" class="btn btn-round btn-danger btn-icon btn-sm text-white" rel="tooltip" title="Deshabilitar" data-placement="left"><i class="fas fa-ban"></i></a>
 					                       	<?php else: ?>
-					                        	<?= $this->Form->postLink(
-					                                '<i class="far fa-thumbs-up"></i>', 
-					                                ['action' => 'toggleActive', $user->username], 
-					                                [
-					                                	'rel' => 'tooltip',
-					                                	'title' => 'Habilitar',
-					                                	'data-placement' => 'left',
-        												'escape' => false,
-					                                    'confirm' => __('¿Está seguro que desea habilitar al usuario {0}?', $user->username),
-					                                    'class' => 'btn btn-round btn-info btn-icon btn-sm'
-					                                ]
-					                            ) ?>
+					                        	<a onclick="system.showSwal('Habilitar','¿Habilitar al usuario '+'<?= $user->username ?>'+' ?','delete', '<?= $this->Url->build('/', true) ?>users/toggleActive/<?= $user->username; ?>')" class="btn btn-round btn-info btn-icon btn-sm text-white" rel="tooltip" title="Habilitar" data-placement="left"><i class="far fa-thumbs-up"></i></a>
 					                        <?php endif ?>
 					                        <a href="<?= $this->Url->build('/', true) ?>users/edit/<?= $user->username; ?>" class="btn btn-round btn-warning btn-icon btn-sm" rel="tooltip" title="Editar" data-placement="left"><i class="fas fa-edit"></i></a>
 						        		</td>

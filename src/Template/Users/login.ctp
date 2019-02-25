@@ -27,17 +27,19 @@ $this->assign('title', $title);?>
                 ],
             ]);?>
           </div>
-          <div class="card-footer text-center">
-            <?= $this->Form->submit('Ingresar', ['class' => 'btn btn-info btn-round btn-lg btn-block']); ?>
-            <div class="pull-left">
-              <h6>
-                <a class="link" href="<?php echo $this->Url->build('/', true) ?>register">Crea una cuenta</a>
-              </h6>
-            </div>
-            <div class="pull-right">
-              <h6>
-                <a class="link" href="<?php echo $this->Url->build('/', true) ?>recover-password">¿Olvidaste tu contraseña?</a>
-              </h6>
+          <div class="card-footer text-center d-flex flex-column">
+            <?= $this->Form->submit('Ingresar', ['class' => 'btn btn-primary btn-round btn-lg btn-block']); ?>
+            <div class="d-flex justify-content-between">
+              <div class="pull-left">
+                <h6>
+                  <a class="link" href="<?php echo $this->Url->build('/', true) ?>register">Crea una cuenta</a>
+                </h6>
+              </div>
+              <div class="pull-right">
+                <h6>
+                  <a class="link" href="<?php echo $this->Url->build('/', true) ?>recover-password">¿Olvidaste tu contraseña?</a>
+                </h6>
+              </div>
             </div>
         <?= $this->Form->end(); ?>
         </div>

@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-info fixed-top navbar-transparent " color-on-scroll="400">
+<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
   <div class="container">
     <div class="navbar-translate">
       <a class="navbar-brand" href="<?php echo $this->Url->build('/', true) ?>" rel="tooltip" title="Nakanishi Web" data-placement="bottom">
@@ -11,7 +11,7 @@
         <span class="navbar-toggler-bar bottom-bar"></span>
       </button>
     </div>
-    <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="img/blurred-image-1.jpg">
+    <div class="collapse navbar-collapse justify-content-end bg-primary" id="navigation">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
