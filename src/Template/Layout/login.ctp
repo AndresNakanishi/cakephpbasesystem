@@ -19,15 +19,14 @@ $system = 'System';
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <?= $this->Html->css('landing.css') ?>
-    <?= $this->Html->css('custom-landing.css') ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body class="login-page sidebar-collapse">
+<body class="login-page signup-page sidebar-collapse">
     <?= $this->element('landing-menu') ?>
     <!-- Content -->
-    <div class="page-header clear-filter" filter-color="orange">
+    <div class="page-header clear-filter header-filter" filter-color="black">
         <?= $this->fetch('content') ?>
         <?= $this->element('login-footer') ?>
     </div>
