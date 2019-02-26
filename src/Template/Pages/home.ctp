@@ -1,4 +1,4 @@
-<div class="page-header clear-filter" filter-color="orange">
+<div class="page-header header-filter" filter-color="black">
     <div class="page-header-image" data-parallax="true" style="background-image:url('img/header.jpg');">
     </div>
     <div class="container d-flex align-items-center">
