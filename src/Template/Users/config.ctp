@@ -67,7 +67,7 @@
 			    </div>
 			    <div class="card-body">
 			        <div class="author">
-		            	<img class="avatar border-gray" src="<?= $user->avatar; ?>" alt="User Avatar">
+		            	<img class="avatar border-gray" src="<?= $authUser->avatar; ?>" alt="User Avatar">
 		                <h5 class="title"><?= $authUser->username; ?></h5>
 			            <p class="description">
 			                <?= $authUser->name; ?> <?= $authUser->surname; ?>
