@@ -70,6 +70,11 @@ class ProfilesTable extends Table
             ->requirePresence('name', 'create')
             ->notEmpty('name');
 
+        $validator
+            ->integer('access_level')
+            ->requirePresence('access_level', 'create')
+            ->notEmpty('access_level');
+
         return $validator;
     }
 }

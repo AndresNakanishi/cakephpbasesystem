@@ -40,6 +40,7 @@ class ProfilesController extends AppController
         $this->viewBuilder()->setLayout('system-datatables');
         $profile = $this->Profiles->newEntity();
         if ($this->request->is('post')) {
+            $data = $this->request->getData();
             filter_var($data['name'], FILTER_SANITIZE_STRING);
             $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
             if ($this->Profiles->save($profile)) {
@@ -64,6 +65,7 @@ class ProfilesController extends AppController
         $this->viewBuilder()->setLayout('system-datatables');
         $profile = $this->Profiles->find('all', ['conditions' => ['code' => $code]])->first();
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $data = $this->request->getData();
             filter_var($data['name'], FILTER_SANITIZE_STRING);
             $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
             if ($this->Profiles->save($profile)) {
