@@ -15,14 +15,14 @@ $this->assign('title', $title);?>
             <?= $this->Form->input('username', [
                 'templates' => [
                 'label' => '',
-                'input' => '<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-user"></i></span></div><input type="text" class="form-control" name="username" placeholder="Usuario" required/>',
+                'input' => '<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-user"></i></span></div><input type="text" class="form-control" autocomplete="new-password" name="username" placeholder="Usuario" required/>',
                 'inputContainer' => '<div class="input-group no-border input-lg">{{content}}</div>',
                 ],
             ]);?>
             <?= $this->Form->input('username', [
                 'templates' => [
                 'label' => '',
-                'input' => '<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-lock"></i></span></div><input type="password" class="form-control" name="password" placeholder="Contraseña" required/>',
+                'input' => '<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-lock"></i></span></div><input type="password" autocomplete="new-password" class="form-control" name="password" placeholder="Contraseña" required/>',
                 'inputContainer' => '<div class="input-group no-border input-lg">{{content}}</div>',
                 ],
             ]);?>
