@@ -29,6 +29,7 @@ $this->assign('title', $title);?>
                         <td><?= $profile->name; ?></td>
                         <td class="text-center"><?= $profile->code; ?></td>
                         <td class="text-right">
+                          <a onclick="system.showSwal('Eliminar','¿Eliminar el perfil '+'<?= $profile->name ?>'+' ?','delete', '<?= $this->Url->build('/', true) ?><?= strtolower($this->request->controller) ?>/delete/<?= $profile->id; ?>')" class="btn btn-round btn-danger btn-icon btn-sm text-white" rel="tooltip" title="Eliminar" data-placement="left"><i class="fas fa-trash"></i></a>
                           <a href="<?= $this->Url->build('/', true) ?>profiles/edit/<?= $profile->code; ?>" class="btn btn-round btn-warning btn-icon btn-sm" rel="tooltip" title="Editar" data-placement="left"><i class="fas fa-edit"></i></a>
                         </td>
                       </tr>

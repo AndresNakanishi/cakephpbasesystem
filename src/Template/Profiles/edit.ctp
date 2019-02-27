@@ -34,22 +34,7 @@ $this->assign('title', $title);?>
                         'required',
                         'autocomplete' => 'off'
                     ]) ?>
-                </div> 
-                <div class="form-group">
-                    <?= $this->Form->control('access_level', [
-                        'class' => 'form-control',
-                        'type' => 'number',
-                        'max' => 9,
-                        'min' => 1,
-                        'label' => [
-                            'class' => 'control-label',
-                            'text' => 'Nivel de Acceso:',
-                        ],
-                        'placeholder' => 'Máximo 9 - Mínimo 1',   
-                        'required',
-                        'autocomplete' => 'off'
-                    ]) ?>
-                </div>           
+                </div>          
             </div>                            
             <div class="card-footer d-flex justify-content-between">
                 <a href="<?= $this->Url->build('/', true) ?><?= strtolower($this->request->controller) ?>/" class="btn btn-fill btn-primary">Volver</a>

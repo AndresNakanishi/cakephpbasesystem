@@ -40,11 +40,11 @@ $this->assign('title', $title);?>
 						        		</td>
 						        		<td class="text-right">
 					                        <?php if ($user->active): ?>
-					                        	<a onclick="system.showSwal('Deshabilitar','¿Deshabilitar al usuario '+'<?= $user->username ?>'+' ?','delete', '<?= $this->Url->build('/', true) ?>users/toggleActive/<?= $user->username; ?>')" class="btn btn-round btn-danger btn-icon btn-sm text-white" rel="tooltip" title="Deshabilitar" data-placement="left"><i class="fas fa-ban"></i></a>
+					                        	<a onclick="system.showSwal('Deshabilitar','¿Deshabilitar al usuario '+'<?= $user->username ?>'+' ?','delete', '<?= $this->Url->build('/', true) ?><?= strtolower($this->request->controller) ?>/toggleActive/<?= $user->username; ?>')" class="btn btn-round btn-danger btn-icon btn-sm text-white" rel="tooltip" title="Deshabilitar" data-placement="left"><i class="fas fa-ban"></i></a>
 					                       	<?php else: ?>
-					                        	<a onclick="system.showSwal('Habilitar','¿Habilitar al usuario '+'<?= $user->username ?>'+' ?','delete', '<?= $this->Url->build('/', true) ?>users/toggleActive/<?= $user->username; ?>')" class="btn btn-round btn-info btn-icon btn-sm text-white" rel="tooltip" title="Habilitar" data-placement="left"><i class="far fa-thumbs-up"></i></a>
+					                        	<a onclick="system.showSwal('Habilitar','¿Habilitar al usuario '+'<?= $user->username ?>'+' ?','delete', '<?= $this->Url->build('/', true) ?><?= strtolower($this->request->controller) ?>/toggleActive/<?= $user->username; ?>')" class="btn btn-round btn-info btn-icon btn-sm text-white" rel="tooltip" title="Habilitar" data-placement="left"><i class="far fa-thumbs-up"></i></a>
 					                        <?php endif ?>
-					                        <a href="<?= $this->Url->build('/', true) ?>users/edit/<?= $user->username; ?>" class="btn btn-round btn-warning btn-icon btn-sm" rel="tooltip" title="Editar" data-placement="left"><i class="fas fa-edit"></i></a>
+					                        <a href="<?= $this->Url->build('/', true) ?><?= strtolower($this->request->controller) ?>/edit/<?= $user->username; ?>" class="btn btn-round btn-warning btn-icon btn-sm" rel="tooltip" title="Editar" data-placement="left"><i class="fas fa-edit"></i></a>
 						        		</td>
 						        	</tr>
 						        <?php endforeach ?>

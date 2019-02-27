@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $code
  * @property string $name
- * @property int $access_level
+ * @property int|null $allow_edit
  *
  * @property \App\Model\Entity\PermissionProfile[] $permission_profiles
  * @property \App\Model\Entity\User[] $users
@@ -29,7 +29,7 @@ class Profile extends Entity
     protected $_accessible = [
         'code' => true,
         'name' => true,
-        'access_level' => true,
+        'allow_edit' => true,
         'permission_profiles' => true,
         'users' => true
     ];

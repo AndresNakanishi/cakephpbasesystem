@@ -78,4 +78,28 @@ class ProfilesController extends AppController
         $this->set(compact('profile'));
     }
 
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['get','post', 'delete']);
+
+        $profile = $this->Profiles->get($id);
+        $deleted = false;
+
+        if ($profile->allow_edit) {
+            try {
+                $deleted = $this->Profiles->delete($profile);
+            } catch(\Exception $e) {
+
+            }
+        }
+        
+        if ($deleted) {
+            $this->Flash->success(__('El perfil ha sido eliminado.'));
+        } else {
+            $this->Flash->error(__('Este perfil no puede ser eliminado.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
 }

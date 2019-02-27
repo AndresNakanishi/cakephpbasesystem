@@ -215,11 +215,14 @@ class UsersController extends AppController
         $this->viewBuilder()->setLayout('login');
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
-            if ($user) {
+            if ($user && $user['active'] == true) {
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
+            } elseif($user && $user['active'] == false) {
+                $this->Flash->error(__('El usuario ha sido desactivado por el administrador.'));
+            } else {
+                $this->Flash->error(__('Usuario o Password inválido.'));
             }
-            $this->Flash->error(__('Usuario o Password inválido.'));
         }
     }
 
@@ -290,6 +293,28 @@ class UsersController extends AppController
             } else {
                 $this->Flash->error(__('El usuario no ha podido ser deshabilitado. Por favor, intente nuevamente.'));
             }
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['get','post', 'delete']);
+
+        $user = $this->Users->get($id);
+        $deleted = false;
+
+        try {
+            $deleted = $this->Users->delete($user);
+        } catch(\Exception $e) {
+
+        }
+        
+        if ($deleted) {
+            $this->Flash->success(__('El usuario ha sido eliminado.'));
+        } else {
+            $this->Flash->error(__('El  usuario no pudo ser eliminado. Intente más tarde.'));
         }
 
         return $this->redirect(['action' => 'index']);
