@@ -40,6 +40,7 @@ class ProfilesController extends AppController
         $this->viewBuilder()->setLayout('system-datatables');
         $profile = $this->Profiles->newEntity();
         if ($this->request->is('post')) {
+            filter_var($data['name'], FILTER_SANITIZE_STRING);
             $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
             if ($this->Profiles->save($profile)) {
                 $this->Flash->success(__('El perfil ha sido guardado.'));
@@ -63,6 +64,7 @@ class ProfilesController extends AppController
         $this->viewBuilder()->setLayout('system-datatables');
         $profile = $this->Profiles->find('all', ['conditions' => ['code' => $code]])->first();
         if ($this->request->is(['patch', 'post', 'put'])) {
+            filter_var($data['name'], FILTER_SANITIZE_STRING);
             $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
             if ($this->Profiles->save($profile)) {
                 $this->Flash->success(__('El perfil ha sido guardado.'));

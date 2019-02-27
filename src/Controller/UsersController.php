@@ -42,7 +42,10 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
-            $newpassword = $this->generate_password(8);               
+            $newpassword = $this->generate_password(8);
+            $data['username'] = filter_var($data['username'], FILTER_SANITIZE_STRING);              
+            $data['surname'] = filter_var($data['surname'], FILTER_SANITIZE_STRING);              
+            $data['name'] = filter_var($data['name'], FILTER_SANITIZE_STRING);              
             $data['password'] = $newpassword;
             $data['active'] = 1;
             $data['avatar'] = 'https://ui-avatars.com/api/?font-size=0.33&background=0D8ABC&color=fff&name='.$data['name'].'+'.$data['surname'];
@@ -74,6 +77,9 @@ class UsersController extends AppController
         $user = $this->Users->find('all', ['conditions' => ['username' => $username]])->contain('Profiles')->first();
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
+            $data['username'] = filter_var($data['username'], FILTER_SANITIZE_STRING);              
+            $data['surname'] = filter_var($data['surname'], FILTER_SANITIZE_STRING);              
+            $data['name'] = filter_var($data['name'], FILTER_SANITIZE_STRING);     
             if ($data !== false) {
                 $user = $this->Users->patchEntity($user, $data);
                 if ($this->Users->save($user)) {
@@ -101,7 +107,9 @@ class UsersController extends AppController
         }
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
-            $data['avatar'] = 'https://ui-avatars.com/api/?size=256&font-size=0.33&background=0D8ABC&color=fff&name='.$data['name'].'+'.$data['surname'];
+            $data['surname'] = filter_var($data['surname'], FILTER_SANITIZE_STRING);              
+            $data['name'] = filter_var($data['name'], FILTER_SANITIZE_STRING);     
+            $data['avatar'] = 'https://ui-avatars.com/api/?size=256&font-size=0.33&background=0D8ABC&color=fff&name='.$data['name'].'+'.$data['surname'];              
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Se han actualizado los cambios.'));
@@ -178,6 +186,9 @@ class UsersController extends AppController
             $data = $this->request->getData();
             $password = $data['password'];
             $password_validate = $data['password_validation'];
+            $data['username'] = filter_var($data['username'], FILTER_SANITIZE_STRING);              
+            $data['surname'] = filter_var($data['surname'], FILTER_SANITIZE_STRING);              
+            $data['name'] = filter_var($data['name'], FILTER_SANITIZE_STRING);     
             $data['active'] = 1;
             $data['profile_id'] = $profile->id;         
             $data['avatar'] = 'https://ui-avatars.com/api/?font-size=0.33&background=0D8ABC&color=fff&name='.$data['name'].'+'.$data['surname'];
