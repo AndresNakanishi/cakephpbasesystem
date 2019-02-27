@@ -1,10 +1,8 @@
 :root
 {
-	--blue:#007bff;
 	--indigo:#6610f2;
 	--purple:#6f42c1;
 	--pink:#e83e8c;
-	--red:#dc3545;
 	--orange:#fd7e14;
 	--yellow:#ffc107;
 	--green:#28a745;
@@ -13,12 +11,39 @@
 	--white:#fff;
 	--gray:#6c757d;
 	--gray-dark:#343a40;
-	--primary:#007bff;
-	--secondary:#6c757d;
-	--success:#28a745;
-	--info:#17a2b8;
-	--warning:#ffc107;
-	--danger:#dc3545;
+	--primary:#f96332;
+	--primary-hover: #fa7a50!important;
+	--primary-alpha30: #f963324d;
+	--primary-alpha80: #f96332cc;
+	--default: #888;
+	--default-hover: #979797!important;
+	--default-alpha30: #8888884d;
+	--default-alpha80: #888888cc;
+	--success: #18ce0f;
+	--success-hover: #1beb11!important;
+	--success-alpha30: #18ce0f4d;
+	--success-alpha80: #18ce0fcc;
+	--info: #2ca8ff;
+	--info-hover: #4bb5ff!important;
+	--info-alpha30: #2ca8ff4d;
+	--info-alpha80: #2ca8ffcc;
+	--warning:#ffb236;
+	--warning-hover: #ffbe55!important;
+	--warning-alpha30: #ffb2364d;
+	--warning-alpha80: #ffb236cc;
+	--danger:#ff3636;
+	--danger-hover: #f55!important;
+	--danger-alpha30: #ff36364d;
+	--danger-alpha80: #ff3636cc;
+	--shadow-20: rgba(0,0,0,.1);
+	--shadow-20: rgba(0,0,0,.2);
+	--shadow-30: rgba(0,0,0,.3);
+	--shadow-40: rgba(0,0,0,.4);
+	--shadow-50: rgba(0,0,0,.5);
+	--shadow-60: rgba(0,0,0,.6);
+	--shadow-70: rgba(0,0,0,.7);
+	--shadow-80: rgba(0,0,0,.8);
+	--shadow-90: rgba(0,0,0,.9);
 	--light:#f8f9fa;
 	--dark:#343a40;
 	--breakpoint-xs:0;
@@ -29,3 +54,6 @@
 	--font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 	--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace
 }
+
+.header-filter[filter-color=black]{background:var(--shadow-20);background:linear-gradient(0deg, var(--shadow-20),var(--shadow-60))}
+.header-filter[filter-color=red]{background:var(--shadow-20);background:linear-gradient(0deg,var(--shadow-20),var(--danger-alpha80))}
