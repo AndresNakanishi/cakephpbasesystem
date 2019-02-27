@@ -8,7 +8,7 @@
                 <h4 class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, molestias ipsam excepturi pariatur deserunt quod.</h4>
                 <br>
                 <div class="buttons">
-                    <a href="#pablo" class="btn btn-info btn-lg mr-3">
+                    <a href="#pablo" class="btn btn-warning btn-lg mr-3">
                         Read More
                     </a>
                 </div>
