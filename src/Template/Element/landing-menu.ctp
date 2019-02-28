@@ -45,11 +45,19 @@
             <p class="d-lg-none d-xl-none">Instagram</p>
           </a>
         </li>
+        <?php if (isset($authUser)): ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo $this->Url->build('/', true) ?>users/dashboard">
+            <i class="fas fa-sign-in-alt"></i> Dashboard
+          </a>
+        </li>
+        <?php else: ?>
         <li class="nav-item">
           <a class="nav-link" rel="tooltip" title="Ingresa al sistema" data-placement="bottom" href="<?php echo $this->Url->build('/', true) ?>login">
             <i class="fas fa-sign-in-alt"></i> Login
           </a>
         </li>
+        <?php endif ?>
       </ul>
     </div>
   </div>

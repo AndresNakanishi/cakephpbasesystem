@@ -33,6 +33,7 @@ $system = 'System';
     <?= $this->Html->script('bootstrap.js') ?>  
     <?= $this->Html->script('bootstrap-switch.js') ?>
     <?= $this->Html->script('nouislider.min.js') ?>  
+    <?= $this->Html->script('moment.js') ?>  
     <?= $this->Html->script('bootstrap-notify.js') ?>  
     <?= $this->Html->script('bootstrap-datepicker.js') ?>  
     <?= $this->Html->script('landing.js') ?>
@@ -40,7 +41,7 @@ $system = 'System';
     <script type="text/javascript">
         $(document).ready(function() {
             nowuiKit.initSliders();
-        });
+        }); 
     </script>
 </body>
 </html>
