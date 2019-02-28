@@ -41,7 +41,11 @@ $system = 'System';
     <script type="text/javascript">
         $(document).ready(function() {
             nowuiKit.initSliders();
+            $("#toggler").click(function(){
+                $(".collapse").collapse('toggle');
+            });
         }); 
+
     </script>
 </body>
 </html>

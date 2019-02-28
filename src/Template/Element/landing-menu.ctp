@@ -5,7 +5,7 @@
       <a class="navbar-brand" href="<?php echo $this->Url->build('/', true) ?>" rel="tooltip" title="Nakanishi Web" data-placement="bottom">
         Sistema Base
       </a>
-      <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+      <button id="toggler" class="navbar-toggler navbar-toggler" type="button" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-bar top-bar"></span>
         <span class="navbar-toggler-bar middle-bar"></span>
         <span class="navbar-toggler-bar bottom-bar"></span>
