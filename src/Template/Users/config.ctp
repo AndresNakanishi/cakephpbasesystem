@@ -54,9 +54,9 @@
 	            </div>
 	            <div class="card-footer d-flex justify-content-between">
 	            	<?= $this->Form->button(__('Cambiar'), [
-		                'class' => 'btn btn-danger btn-lg'
+		                'class' => 'btn btn-sm btn-danger btn-lg'
 		            ]) ?>
-	            	<a href="<?= $this->Url->build('/', true) ?>users/configPass/<?= $authUser->username  ?>" class="btn btn-lg btn-primary">Cambiar Contraseña</a>
+	            	<a href="<?= $this->Url->build('/', true) ?>users/configPass/<?= $authUser->username  ?>" class="btn btn-sm btn-primary">Cambiar Contraseña</a>
 	            </div>
 				<?= $this->Form->end() ?>
 	        </div>
