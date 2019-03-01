@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="orange">
+<div class="sidebar" id="sidebar" data-color="orange">
   <!-- Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"-->
   <div class="logo">
     <a href="<?php echo $this->Url->build('/', true) ?>" class="simple-text logo-mini">

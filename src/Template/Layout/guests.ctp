@@ -45,7 +45,6 @@ $system = 'System';
                 $(".collapse").collapse('toggle');
             });
         }); 
-
     </script>
 </body>
 </html>

@@ -61,9 +61,3 @@
 .header-filter[filter-color=warning]{background:var(--shadow-20);background:linear-gradient(0deg,var(--shadow-20),var(--warning-alpha80))}
 .header-filter[filter-color=info]{background:var(--shadow-20);background:linear-gradient(0deg,var(--shadow-20),var(--info-alpha80))}
 .header-filter[filter-color=danger]{background:var(--shadow-20);background:linear-gradient(0deg,var(--shadow-20),var(--danger-alpha80))}
-@media screen and (max-width:991px){
-.navbar-collapse:before{background:var(--primary);opacity:.76;filter:alpha(opacity=76);display:block;content:"";position:absolute;width:100%;height:100%;top:0;left:0;z-index:-1}
-}
-.collapse.show {
-  visibility: visible;
-}
