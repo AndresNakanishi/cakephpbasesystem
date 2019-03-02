@@ -8,7 +8,7 @@
 	            <div class="card-header">
 	                <h5 class="title">Edita tu información</h5>
 	            </div>
-            	<?= $this->Form->create($user, ['url' => ['action' => 'configData',$user->username]]) ?>
+            	<?= $this->Form->create($user, ['type' => 'file', 'url' => ['action' => 'configData',$user->username]]) ?>
 	            <div class="card-body">
 	            	<div class="row">
 		            	<div class="col-md-6 d-flex flex-column align-items-center">
@@ -22,9 +22,9 @@
 	                              <span class="btn btn-rose btn-round btn-file">
 	                                  <span class="fileinput-new">Subir Foto</span>
 	                                  <span class="fileinput-exists">Cambiarla</span>
-	                                  <input type="hidden" value="" name="..."><input type="file" name="">
+	                                  <input type="file" name="avatar">
 	                              </span>
-	                              <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Eliminarla</a>
+	                              <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Eliminarla</a>
 	                          </div>
 	                      </div>
 	                    </div>

@@ -107,6 +107,8 @@ class UsersController extends AppController
         }
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
+            debug($data);
+            die;
             $data['surname'] = filter_var($data['surname'], FILTER_SANITIZE_STRING);              
             $data['name'] = filter_var($data['name'], FILTER_SANITIZE_STRING);     
             $data['avatar'] = 'https://ui-avatars.com/api/?size=256&font-size=0.33&background=0D8ABC&color=fff&name='.$data['name'].'+'.$data['surname'];              
