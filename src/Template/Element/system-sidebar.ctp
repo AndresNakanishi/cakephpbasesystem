@@ -11,7 +11,11 @@
   <div class="sidebar-wrapper" id="sidebar-wrapper">
     <div class="user">
         <div class="photo">
-            <img src="<?= $authUser->avatar; ?>" alt="User Avatar">
+          <?php if (strlen($authUser->avatar) > 80): ?>
+            <img src="<?= $authUser->avatar ?>" alt="<?= $authUser->username ?>">
+          <?php else: ?>
+            <img src="<?= $this->Url->build('/', true) ?><?= $authUser->avatar ?>" alt="<?= $authUser->username ?>">
+          <?php endif ?>
         </div>
         <div class="info">
             <a data-toggle="collapse" href="#collapseExample" class="collapsed" aria-expanded="false">

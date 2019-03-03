@@ -15,7 +15,11 @@
 	                      <label class="card-title">Avatar</label>
 	                      <div class="fileinput text-center fileinput-new" data-provides="fileinput">
 	                          <div class="fileinput-new thumbnail">
-	                              <img src="<?= $user->avatar ?>" alt="...">
+	                              <?php if (strlen($user->avatar) > 80): ?>
+		                              <img src="<?= $user->avatar ?>" alt="<?= $user->username ?>">
+	                              <?php else: ?>
+		                              <img src="<?= $this->Url->build('/', true) ?><?= $user->avatar ?>" alt="<?= $user->username ?>">
+	                              <?php endif ?>
 	                          </div>
 	                          <div class="fileinput-preview fileinput-exists thumbnail" style=""></div>
 	                          <div>

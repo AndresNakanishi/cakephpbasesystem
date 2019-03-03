@@ -107,11 +107,9 @@ class UsersController extends AppController
         }
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
-            debug($data);
-            die;
             $data['surname'] = filter_var($data['surname'], FILTER_SANITIZE_STRING);              
             $data['name'] = filter_var($data['name'], FILTER_SANITIZE_STRING);     
-            $data['avatar'] = 'https://ui-avatars.com/api/?size=256&font-size=0.33&background=0D8ABC&color=fff&name='.$data['name'].'+'.$data['surname'];              
+            $data['avatar'] = $this->changeAvatar($data['avatar'], $data['name'], $data['surname'], $user->id);                 
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Se han actualizado los cambios.'));
@@ -120,6 +118,34 @@ class UsersController extends AppController
                 $this->Flash->error(__('No se han podido actualizar los cambios.'));
             }
         } 
+    }
+
+    public function changeAvatar($avatar, $name, $surname, $id){
+        if ($avatar['name'] == '') {
+            $newAvatar = 'https://ui-avatars.com/api/?size=256&font-size=0.33&background=0D8ABC&color=fff&name='.$name.'+'.$surname;
+        } else {
+            $imgFolder = "img/users/$id/";
+            $folder = WWW_ROOT . $imgFolder;
+            
+            $fileName = "avatar.jpg";
+            $fileTmp = $avatar["tmp_name"];
+
+            $fileDest = $folder . $fileName;
+
+            if (!is_dir($folder)) {
+                mkdir($folder, 0777, true);
+            }
+
+            if (file_exists($fileDest)) {   
+                unlink($fileDest);
+                $success = move_uploaded_file($fileTmp, $fileDest);                         
+            } else {
+                $success = move_uploaded_file($fileTmp, $fileDest);                         
+            }
+
+            $newAvatar = $imgFolder . $fileName;
+        }
+        return $newAvatar;
     }
 
     // Cambiar la Contraseña
