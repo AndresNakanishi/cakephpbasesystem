@@ -120,18 +120,18 @@ class UsersController extends AppController
         } 
     }
 
-    public function changeAvatar($avatar, $name, $surname, $id){
-        if ($avatar['name'] == '') {
-            $newAvatar = 'https://ui-avatars.com/api/?size=256&font-size=0.33&background=0D8ABC&color=fff&name='.$name.'+'.$surname;
-        } else {
-            $imgFolder = "img/users/$id/";
-            $folder = WWW_ROOT . $imgFolder;
+    private function changeAvatar($avatar, $name, $surname, $id){
+        $imgFolder = "img/users/$id/";
+        $folder = WWW_ROOT . $imgFolder;
+        $fileName = "avatar.jpg";
+        $fileTmp = $avatar["tmp_name"];
+        $fileDest = $folder . $fileName;
             
-            $fileName = "avatar.jpg";
-            $fileTmp = $avatar["tmp_name"];
-
-            $fileDest = $folder . $fileName;
-
+        if ($avatar['name'] == '') {
+            if (!file_exists($fileDest)) {   
+                $newAvatar = 'https://ui-avatars.com/api/?size=256&font-size=0.33&background=0D8ABC&color=fff&name='.$name.'+'.$surname;
+            }
+        } else {
             if (!is_dir($folder)) {
                 mkdir($folder, 0777, true);
             }
