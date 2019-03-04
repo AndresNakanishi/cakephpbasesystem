@@ -381,6 +381,7 @@ return [
      * To use database sessions, load the SQL file located at config/schema/sessions.sql
      */
     'Session' => [
-        'defaults' => 'php',
+        'defaults' => 'php',        
+        'timeout'=> 24*60//in minutes
     ],
 ];
