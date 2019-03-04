@@ -38,10 +38,5 @@ $system = 'System';
     <?= $this->Html->script('bootstrap-datepicker.js') ?>  
     <?= $this->Html->script('landing.js') ?>
     <?= $this->Flash->render() ?>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            nowuiKit.initSliders();
-        }); 
-    </script>
 </body>
 </html>

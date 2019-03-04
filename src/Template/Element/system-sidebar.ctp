@@ -44,17 +44,31 @@
           <p>Dashboard</p>
         </a>
       </li>
-      <li class="<?php if($this->request->controller == 'Users' && $this->request->action == 'index'){ echo 'active';} ?>">
-        <a href="<?php echo $this->Url->build('/', true) ?>users">
-          <i class="now-ui-icons users_single-02"></i>
-          <p>Usuarios</p>
+      <li>                 
+        <a data-toggle="collapse" href="#pagesExamples">
+          
+            <i class="fas fa-cog"></i>
+          
+            <p>
+              Gestión <b class="caret"></b>
+            </p>
         </a>
-      </li>
-      <li class="<?php if($this->request->controller == 'Profiles'){ echo 'active';} ?>">
-        <a href="<?php echo $this->Url->build('/', true) ?>profiles">
-          <i class="fas fa-address-card"></i> 
-          <p>Perfiles</p>
-        </a>
+        <div class="collapse " id="pagesExamples">
+          <ul class="nav">
+            <li class="<?php if($this->request->controller == 'Users' && $this->request->action == 'index'){ echo 'active';} ?>">
+              <a href="<?php echo $this->Url->build('/', true) ?>users">
+                <i class="now-ui-icons users_single-02"></i>
+                <p>Usuarios</p>
+              </a>
+            </li>
+            <li class="<?php if($this->request->controller == 'Profiles'){ echo 'active';} ?>">
+              <a href="<?php echo $this->Url->build('/', true) ?>profiles">
+                <i class="fas fa-address-card"></i> 
+                <p>Perfiles</p>
+              </a>
+            </li>            
+          </ul>
+        </div>             
       </li>
       <li>
         <a href="<?php echo $this->Url->build('/', true) ?>logout">
