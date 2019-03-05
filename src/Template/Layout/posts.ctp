@@ -9,6 +9,14 @@ $system = 'System';
     <title>
         <?= $this->fetch('title') ?>
     </title>
+    <meta name="description" content="<?= $this->fetch('description') ?>" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:title" content="<?= $this->fetch('title') ?>" />
+    <meta property="og:description" content="<?= $this->fetch('description') ?>" />
+    <meta property="og:url" content="<?= $this->fetch('url') ?>" />
+    <meta property="og:image" content="<?= $this->fetch('image') ?>" />
+    <meta property='og:type' content='article' />
+    <meta property='article:author' content='<?= $this->fetch('author') ?>' />
     <!-- FAVICON -->
     <?= $this->Html->meta('icon', 'img/favicon.png', ['type' => 'image/png']) ?>
     <!-- CSS -->
