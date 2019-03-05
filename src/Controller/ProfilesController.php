@@ -37,7 +37,7 @@ class ProfilesController extends AppController
      */
     public function add()
     {
-        $this->viewBuilder()->setLayout('system-datatables');
+        $this->viewBuilder()->setLayout('system-default');
         $profile = $this->Profiles->newEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
@@ -62,7 +62,7 @@ class ProfilesController extends AppController
      */
     public function edit($code = null)
     {
-        $this->viewBuilder()->setLayout('system-datatables');
+        $this->viewBuilder()->setLayout('system-default');
         $profile = $this->Profiles->find('all', ['conditions' => ['code' => $code]])->first();
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();

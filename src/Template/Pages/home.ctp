@@ -16,6 +16,41 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="section">
+        <h3 class="title text-center">Últimas Publicaciones</h3>
+        <br>
+        <div class="row">
+            <?php foreach ($posts as $post): ?>
+                <div class="col-md-4">
+                    <div class="card card-plain card-blog">
+                        <div class="card-image">
+                            <a href="<?= $this->Url->build('/', true) ?>blog/<?= $post->slug ?>">
+                                <img class="img rounded img-raised" src="<?= $this->Url->build('/', true) ?><?= $post->img_url ?>" alt="<?= $post->title?>">
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <h6 class="category text-info"><?= $post->category->name ?></h6>
+                            <h4 class="card-title">
+                                <a href="<?= $this->Url->build('/', true) ?>blog/<?= $post->slug ?>"><?= $post->title?></a>
+                            </h4>
+                            <p class="card-description">
+                                <?= substr($post->content, 0 , 50) ?><a href="<?= $this->Url->build('/', true) ?>blog/<?= $post->slug ?>"> Leer más... </a>
+
+                                </p>
+                            <div class="author">
+                                <img src="<?= $this->Url->build('/', true) ?><?= $post->user->avatar ?>" alt="<?= $post->user->username ?>" class="avatar img-raised">
+                                <span><?= $post->user->username ?></span>
+                            </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+</div>
 <div class="pricing-3 section-image" style="background-image: url('img/pricing1.jpg')">
     <div class="container">
         <div class="row">

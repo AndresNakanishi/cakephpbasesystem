@@ -38,14 +38,38 @@
         </div>
     </div>
     <ul class="nav">
-      <li class="<?php if($this->request->controller == 'Users' && $this->request->action == 'dashboard'){ echo 'active';} ?>">
+      <li class="<?php if($this->request->getParam('controller') == 'Users' && $this->request->getParam('action') == 'dashboard'){ echo 'active';} ?>">
         <a href="<?php echo $this->Url->build('/', true) ?>dashboard">
           <i class="now-ui-icons design_app"></i>
           <p>Dashboard</p>
         </a>
       </li>
       <li>                 
-        <a data-toggle="collapse" href="#pagesExamples">
+        <a data-toggle="collapse" href="#blog">
+            <i class="fas fa-book"></i>
+            <p>
+              Blog <b class="caret"></b>
+            </p>
+        </a>
+        <div class="collapse " id="blog">
+          <ul class="nav">
+            <li class="<?php if($this->request->getParam('controller') == 'Posts' && $this->request->getParam('action') == 'index'){ echo 'active';} ?>">
+              <a class="d-flex align-items-center" href="<?php echo $this->Url->build('/', true) ?>posts">
+                <i class="far fa-file"></i>
+                <p>Posts</p>
+              </a>
+            </li>
+            <li class="<?php if($this->request->getParam('controller') == 'Categories' && $this->request->getParam('action') == 'index'){ echo 'active';} ?>">
+              <a class="d-flex align-items-center" href="<?php echo $this->Url->build('/', true) ?>categories">
+                <i class="fas fa-th"></i> 
+                <p>Categorías</p>
+              </a>
+            </li>            
+          </ul>
+        </div>             
+      </li>
+      <li>                 
+        <a data-toggle="collapse" href="#gestion">
           
             <i class="fas fa-cog"></i>
           
@@ -53,16 +77,16 @@
               Gestión <b class="caret"></b>
             </p>
         </a>
-        <div class="collapse " id="pagesExamples">
+        <div class="collapse " id="gestion">
           <ul class="nav">
-            <li class="<?php if($this->request->controller == 'Users' && $this->request->action == 'index'){ echo 'active';} ?>">
-              <a href="<?php echo $this->Url->build('/', true) ?>users">
+            <li class="<?php if($this->request->getParam('controller') == 'Users' && $this->request->getParam('action') == 'index'){ echo 'active';} ?>">
+              <a class="d-flex align-items-center" href="<?php echo $this->Url->build('/', true) ?>users">
                 <i class="now-ui-icons users_single-02"></i>
                 <p>Usuarios</p>
               </a>
             </li>
-            <li class="<?php if($this->request->controller == 'Profiles'){ echo 'active';} ?>">
-              <a href="<?php echo $this->Url->build('/', true) ?>profiles">
+            <li class="<?php if($this->request->getParam('controller') == 'Profiles'){ echo 'active';} ?>">
+              <a class="d-flex align-items-center" href="<?php echo $this->Url->build('/', true) ?>profiles">
                 <i class="fas fa-address-card"></i> 
                 <p>Perfiles</p>
               </a>
@@ -71,7 +95,7 @@
         </div>             
       </li>
       <li>
-        <a href="<?php echo $this->Url->build('/', true) ?>logout">
+        <a class="d-flex align-items-center" href="<?php echo $this->Url->build('/', true) ?>logout">
           <i class="fas fa-sign-out-alt"></i>
           <p>Salir</p>
         </a>

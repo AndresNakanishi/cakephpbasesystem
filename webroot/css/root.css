@@ -61,3 +61,9 @@
 .header-filter[filter-color=warning]{background:var(--shadow-20);background:linear-gradient(0deg,var(--shadow-20),var(--warning-alpha80))}
 .header-filter[filter-color=info]{background:var(--shadow-20);background:linear-gradient(0deg,var(--shadow-20),var(--info-alpha80))}
 .header-filter[filter-color=danger]{background:var(--shadow-20);background:linear-gradient(0deg,var(--shadow-20),var(--danger-alpha80))}
+.text-post{
+	font-weight: 400;
+	font-size: 20px;
+	text-align: justify;
+	line-height: 1.75em;
+}

@@ -1,12 +1,7 @@
 <?php
-
 namespace App\Controller;
 
-use Cake\Core\Configure;
-use Cake\Http\Exception\ForbiddenException;
-use Cake\Http\Exception\NotFoundException;
-use Cake\View\Exception\MissingTemplateException;
-
+use Cake\ORM\TableRegistry;
 
 class PagesController extends AppController
 {
@@ -20,5 +15,19 @@ class PagesController extends AppController
     public function home()
     {
         $this->viewBuilder()->setLayout('guests');
+
+        $posts = TableRegistry::get('posts')->find('all', ['contain' => ['Categories','Users']], ['conditions' => ['status' => 2]])->all();
+    
+        $this->set(compact('posts'));
+    }
+
+    // Home - Just Layout
+    public function post($slug = null)
+    {
+        $this->viewBuilder()->setLayout('posts');
+
+        $post = TableRegistry::get('posts')->find('all', ['contain' => ['Categories','Users']], ['conditions' => ['slug' => $slug]])->first();
+    
+        $this->set(compact('post'));
     }
 }

@@ -19,6 +19,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     Router::scope('/', function ($routes) {
         $routes->connect('/', ['controller' => 'Pages', 'action' => 'home']);
+        $routes->connect('blog/*', ['controller' => 'Pages', 'action' => 'post']);
         // Auth
         $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
         $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
