@@ -23,20 +23,20 @@
         <div class="row">
             <?php foreach ($posts as $post): ?>
                 <div class="col-md-4">
-                    <div class="card card-plain card-blog">
+                    <div class="card card-blog">
                         <div class="card-image">
                             <a href="<?= $this->Url->build('/', true) ?>blog/<?= $post->slug ?>">
-                                <img class="img rounded img-raised" src="<?= $this->Url->build('/', true) ?><?= $post->img_url ?>" alt="<?= $post->title?>">
+                                <img class="img rounded" src="<?= $this->Url->build('/', true) ?><?= $post->img_url ?>" alt="<?= $post->title?>">
                             </a>
                         </div>
 
                         <div class="card-body">
-                            <h6 class="category text-info"><?= $post->category->name ?></h6>
+                            <h6 class="category"><a class="link-hover text-info" href="<?= $this->Url->build('/', true) ?>blog/c/<?= $post->category->slug ?>"><?= $post->category->name ?></a></h6>
                             <h4 class="card-title">
                                 <a href="<?= $this->Url->build('/', true) ?>blog/<?= $post->slug ?>"><?= $post->title?></a>
                             </h4>
                             <p class="card-description">
-                                <?= substr($post->content, 0 , 50) ?><a href="<?= $this->Url->build('/', true) ?>blog/<?= $post->slug ?>"> Leer más... </a>
+                                <?= substr(strip_tags($post->content),0 , 70) ?><a href="<?= $this->Url->build('/', true) ?>blog/<?= $post->slug ?>"> Leer más... </a>
 
                                 </p>
                             <div class="author">

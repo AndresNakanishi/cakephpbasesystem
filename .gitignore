@@ -6,6 +6,7 @@
 /tmp/*
 /vendor/*
 /webroot/img/users/*
+/webroot/img/blogs/*
 
 # OS generated files #
 ######################

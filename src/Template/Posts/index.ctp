@@ -35,8 +35,9 @@ $this->assign('title', $title);?>
                     <td><?= $post->user->username; ?></td>
                     <td><?= $post->state; ?></td>
                     <td class="text-right">
-                      <a onclick="system.showSwal('Eliminar','¿Eliminar la publicación '+'<?= $post->title ?>'+' ?','delete', '<?= $this->Url->build('/', true) ?><?= strtolower($this->request->controller) ?>/delete/<?= $post->id; ?>')" class="btn btn-round btn-danger btn-icon btn-sm text-white" rel="tooltip" title="Eliminar" data-placement="left"><i class="fas fa-trash"></i></a>
+                      <a href="<?= $this->Url->build('/', true) ?><?= $post->url ?>" class="btn btn-round btn-info btn-icon btn-sm text-white" rel="tooltip" title="Ver Publicación" data-placement="left" target="_blank"><i class="fas fa-eye"></i></a>
                       <a href="<?= $this->Url->build('/', true) ?><?= strtolower($this->request->controller) ?>/edit/<?= $post->id; ?>" class="btn btn-round btn-warning btn-icon btn-sm" rel="tooltip" title="Editar" data-placement="left"><i class="fas fa-edit"></i></a>
+                      <a onclick="system.showSwal('Eliminar','¿Eliminar la publicación '+'<?= $post->title ?>'+' ?','delete', '<?= $this->Url->build('/', true) ?><?= strtolower($this->request->controller) ?>/delete/<?= $post->id; ?>')" class="btn btn-round btn-danger btn-icon btn-sm text-white" rel="tooltip" title="Eliminar" data-placement="left"><i class="fas fa-trash"></i></a>
                     </td>
                   </tr>
                 <?php endforeach ?>

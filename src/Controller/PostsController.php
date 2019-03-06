@@ -35,7 +35,7 @@ class PostsController extends AppController
      */
     public function add()
     {
-        $this->viewBuilder()->setLayout('system-default');
+        $this->viewBuilder()->setLayout('posts-create');
         $session = $this->request->getSession();
         $post = $this->Posts->newEntity();
         if ($this->request->is('post')) {
@@ -77,7 +77,7 @@ class PostsController extends AppController
      */
     public function edit($id = null)
     {
-        $this->viewBuilder()->setLayout('system-default');
+        $this->viewBuilder()->setLayout('posts-create');
         $session = $this->request->session();
         $post = $this->Posts->get($id, [
             'contain' => []

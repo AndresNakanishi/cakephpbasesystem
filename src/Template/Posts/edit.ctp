@@ -43,12 +43,12 @@ $this->assign('title', $title);?>
                             ]) ?>
                         </div>
                         <div class="form-group">
-                            <label>Título</label>
+                            <label>Título:</label>
                             <input type="text" name="title" placeholder="Título de tu Publicación" class="form-control" value="<?= $post->title ?>">
                         </div>
                         <div class="form-group">
-                            <label>Artículo</label>
-                            <textarea type="text" name="content" class="form-control"><?= $post->content ?></textarea>
+                            <label>Artículo:</label>
+                            <textarea type="text" id="editor" name="content" class="form-control"><?= $post->content ?></textarea>
                         </div>
                     </div>
                 </div>           

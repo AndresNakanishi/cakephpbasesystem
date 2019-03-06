@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $name
+ * @property string|null $slug
  *
  * @property \App\Model\Entity\Post[] $posts
  */
@@ -25,6 +26,7 @@ class Category extends Entity
      */
     protected $_accessible = [
         'name' => true,
+        'slug' => true,
         'posts' => true
     ];
 }

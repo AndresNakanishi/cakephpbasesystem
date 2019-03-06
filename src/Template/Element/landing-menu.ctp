@@ -13,6 +13,11 @@
     </div>
     <div class="collapse navbar-collapse justify-content-end bg-primary" id="navigation">
       <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo $this->Url->build('/', true) ?>blog">
+            Blog
+          </a>
+        </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
             <i class="fas fa-user"></i>&nbsp;
@@ -28,19 +33,19 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" rel="tooltip" title="Seguinos en Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+          <a class="nav-link" rel="tooltip" title="Seguinos en Twitter" data-placement="bottom" href="https://twitter.com/andresnakanishi" target="_blank">
             <i class="fab fa-twitter"></i>
             <p class="d-lg-none d-xl-none">Twitter</p>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" rel="tooltip" title="Seguinos en Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+          <a class="nav-link" rel="tooltip" title="Seguinos en Facebook" data-placement="bottom" href="https://www.facebook.com/andresnakanishi" target="_blank">
             <i class="fab fa-facebook-square"></i>
             <p class="d-lg-none d-xl-none">Facebook</p>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" rel="tooltip" title="Seguinos en Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+          <a class="nav-link" rel="tooltip" title="Seguinos en Instagram" data-placement="bottom" href="https://www.instagram.com/andresnakanishi" target="_blank">
             <i class="fab fa-instagram"></i>
             <p class="d-lg-none d-xl-none">Instagram</p>
           </a>

@@ -36,6 +36,7 @@ class CategoriesController extends AppController
         $this->viewBuilder()->setLayout('system-default');
         $category = $this->Categories->newEntity();
         if ($this->request->is('post')) {
+            $category->slug = $this->slugify($this->request->getData()['name']);
             $category = $this->Categories->patchEntity($category, $this->request->getData());
             if ($this->Categories->save($category)) {
                 $this->Flash->success(__('Creaste de manera correcta la categoría.'));
@@ -99,5 +100,33 @@ class CategoriesController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    // Slug Creator
+    private function slugify($text)
+    {
+      // replace non letter or digits by -
+      $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+
+      // transliterate
+      $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+      // remove unwanted characters
+      $text = preg_replace('~[^-\w]+~', '', $text);
+
+      // trim
+      $text = trim($text, '-');
+
+      // remove duplicate -
+      $text = preg_replace('~-+~', '-', $text);
+
+      // lowercase
+      $text = strtolower($text);
+
+      if (empty($text)) {
+        return 'n-a';
+      }
+
+      return $text;
     }
 }

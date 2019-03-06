@@ -62,4 +62,9 @@ class Post extends Entity
                 break;
         }
     }
+
+    protected function _geturl()
+    {
+        return 'blog/'.$this->_properties['slug'];
+    }
 }
